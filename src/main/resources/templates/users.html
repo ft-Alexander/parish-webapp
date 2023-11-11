@@ -39,10 +39,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each = "user : ${users}">
-                <td th:text = "${user.firstName}"></td>
-                <td th:text = "${user.lastName}"></td>
-                <td th:text = "${user.email}"></td>
+            <tr th:each = "staff : ${staffDto}">
+                <td th:text = "${staff.fname}"></td>
+                <td th:text = "${staff.lname}"></td>
+                <td th:text = "${staff.email}"></td>
             </tr>
         </tbody>
     </table>

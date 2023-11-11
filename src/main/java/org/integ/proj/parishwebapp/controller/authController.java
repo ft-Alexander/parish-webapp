@@ -49,10 +49,10 @@ public class authController {
                     "There is already an account registered with the same email");
         }
 
-        if(result.hasErrors()){
-            model.addAttribute("user", staffDto);
-            return "/register";
-        }
+//        if(result.hasErrors()){
+//            model.addAttribute("user", staffDto);
+//            return "/register";
+//        }
 
         staffService.saveUser(staffDto);
         return "redirect:/register?success";
@@ -61,11 +61,10 @@ public class authController {
  // handler method to handle list of users
     @GetMapping("/users")
     public String users(Model model){
-        List<StaffDto> users = staffService.findAllUsers();
-        model.addAttribute("users", users);
+        List<StaffDto> staffDto = staffService.findAllUsers();
+        model.addAttribute("staffDto", staffDto);
         return "users";
-    }
-    
+    } 
     // handler method to handle login request
     @GetMapping("/login")
     public String login(){

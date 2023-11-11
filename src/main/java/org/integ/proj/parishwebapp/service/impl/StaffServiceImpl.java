@@ -8,6 +8,7 @@ import org.integ.proj.parishwebapp.repository.StaffRepository;
 import org.integ.proj.parishwebapp.service.StaffService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,11 +29,14 @@ public class StaffServiceImpl implements StaffService{
 	    @Override
 	    public void saveUser(StaffDto staffDto) {
 	        Staff staff = new Staff();
+	        staff.setFname(staffDto.getFname());
+	        staff.setMname(staffDto.getMname());
+	        staff.setLname(staffDto.getLname());
 	        staff.setName(staffDto.getFname() + " " + staffDto.getMname()+" "+staffDto.getLname());
 	        staff.setEmail(staffDto.getEmail());
 	        // encrypt the password using spring security
 	        staff.setPassword(passwordEncoder.encode(staffDto.getPassword()));
-
+	        staff.setEmployementDate(staffDto.getEmployementDate());
 	        Role role = roleRepository.findByName("ROLE_ADMIN");
 	        if(role == null){
 	            role = checkRoleExist();

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,7 @@ public class StaffDto {
 	    private String email;
 	    @NotEmpty(message = "Password should not be empty")
 	    private String password;
-	    @NotEmpty
+	    @NotNull
 	    private LocalDate employementDate;
 	    
 }
