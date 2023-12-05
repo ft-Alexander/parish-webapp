@@ -46,7 +46,7 @@
             th:object="${user}"
           >
           <div class="form-group mb-3">
-              <label class="form-label">Employement Date</label>
+              <label class="form-label">Employment Date</label>
               <input
                       class="form-control"
                       id="employementDate"
@@ -54,6 +54,7 @@
                       placeholder="Enter first name"
                       th:field="*{employementDate}"
                       type="date"
+                      required
               />
               <p th:errors = "employementDate" class="text-danger"
               th:if="${#fields.hasErrors('employementDate')}"></p>
@@ -68,6 +69,7 @@
                       placeholder="Enter first name"
                       th:field="*{fname}"
                       type="text"
+                      required
               />
               <p th:errors = "fname" class="text-danger"
               th:if="${#fields.hasErrors('fname')}"></p>
@@ -82,6 +84,7 @@
                       placeholder="Enter Middle Name"
                       th:field="*{mname}"
                       type="text"
+                      required
               />
               <p th:errors = "*{lname}" class="text-danger"
                  th:if="${#fields.hasErrors('mname')}"></p>
@@ -96,6 +99,7 @@
                       placeholder="Enter last name"
                       th:field="*{lname}"
                       type="text"
+                      required
               />
               <p th:errors = "*{lname}" class="text-danger"
                  th:if="${#fields.hasErrors('lname')}"></p>
@@ -110,6 +114,7 @@
                       placeholder="Enter email address"
                       th:field="*{email}"
                       type="email"
+                      required
               />
               <p th:errors = "*{email}" class="text-danger"
                  th:if="${#fields.hasErrors('email')}"></p>
@@ -124,6 +129,7 @@
                       placeholder="Enter password"
                       th:field="*{password}"
                       type="password"
+                      required
               />
               <p th:errors = "*{password}" class="text-danger"
                  th:if="${#fields.hasErrors('password')}"></p>

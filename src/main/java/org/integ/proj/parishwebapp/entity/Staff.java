@@ -29,7 +29,7 @@ public class Staff {
     @Column(nullable=false)
     private String fname;
     
-    @Column
+    @Column(nullable=false)
     private String mname;
     
     @Column(nullable=false)

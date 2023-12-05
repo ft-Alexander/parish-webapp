@@ -7,8 +7,14 @@ import org.integ.proj.parishwebapp.entity.Staff;
 
 public interface StaffService {
 	 void saveUser(StaffDto staffDto);
+	 
+	 void deleteUserById(Long id);
 
-	    Staff findUserByEmail(String email);
+	 Staff findUserByEmail(String email);
 
-	    List<StaffDto> findAllUsers();
+	 List<StaffDto> findAllUsers();
+	    
+	 Staff findUserById(Long id);
+	    
+	 Staff editUser(Staff staff);
 }
