@@ -23,12 +23,12 @@ public class authController {
 		super();
 		this.staffService = staffService;
 	}
-	// handler method to handle home page request
+//	handler method to handle home page request
     @GetMapping("/index")
     public String home(){
         return "index";
     }
-    // handler method to handle user registration form request
+//	handler method to handle user registration form request
     @GetMapping("/register")
     public String showRegistrationForm1(Model model){
         // create model object to store form data
@@ -37,7 +37,7 @@ public class authController {
         return "register";
     }
 
-    // handler method to handle user registration form submit request
+//	handler method to handle user registration form submit request
     @PostMapping("/register/save")
     public String registration(@Valid @ModelAttribute("user") StaffDto staffDto,
                                BindingResult result,
@@ -58,16 +58,17 @@ public class authController {
         return "redirect:/register?success";
     }
     
- // handler method to handle list of users
+// 	handler method to handle login request
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+    
+// 	handler method to handle list of users
     @GetMapping("/users")
     public String users(Model model){
         List<StaffDto> staffDto = staffService.findAllUsers();
         model.addAttribute("staffDto", staffDto);
         return "users";
-    } 
-    // handler method to handle login request
-    @GetMapping("/login")
-    public String login(){
-        return "login";
     }
 }

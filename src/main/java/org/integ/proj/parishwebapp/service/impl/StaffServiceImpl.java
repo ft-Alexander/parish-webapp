@@ -51,6 +51,21 @@ public class StaffServiceImpl implements StaffService{
 	    }
 
 	    @Override
+	    public Staff findUserById(Long id) {
+	    	return staffRepository.findById(id).get();
+	    }
+	    
+	    @Override
+	    public Staff editUser(Staff staff) {
+	    	return staffRepository.save(staff);
+	    }
+	    
+	    @Override
+	    public void deleteUserById(Long id) {
+	    	staffRepository.deleteById(id);
+	    }
+	    
+	    @Override
 	    public List<StaffDto> findAllUsers() {
 	        List<Staff> staff = staffRepository.findAll();
 	        return staff.stream()
@@ -60,10 +75,15 @@ public class StaffServiceImpl implements StaffService{
 
 	    private StaffDto mapToUserDto(Staff user){
 	        StaffDto staffDto = new StaffDto();
-	        String[] str = user.getName().split(" ");
-	        staffDto.setFname(str[0]);
-	        staffDto.setLname(str[1]);
+	        //String[] str = user.getName().split(" ");
+	        //staffDto.setFname(str[0]);
+	        //staffDto.setLname(str[1]);
+	        staffDto.setId(user.getId());
+	        staffDto.setFname(user.getFname());
+	        staffDto.setMname(user.getMname());
+	        staffDto.setLname(user.getLname());
 	        staffDto.setEmail(user.getEmail());
+	        staffDto.setEmployementDate(user.getEmployementDate());
 	        return staffDto;
 	    }
 

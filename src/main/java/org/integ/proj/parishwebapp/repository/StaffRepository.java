@@ -1,6 +1,5 @@
 package org.integ.proj.parishwebapp.repository;
 
-
 import org.integ.proj.parishwebapp.entity.Staff;
 import org.springframework.data.jpa.repository.JpaRepository;
 
