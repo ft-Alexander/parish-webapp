@@ -23,12 +23,16 @@ public class authController {
 		super();
 		this.staffService = staffService;
 	}
+<<<<<<< Updated upstream
 //	handler method to handle home page request
     @GetMapping("/index")
     public String home(){
         return "index";
     }
 //	handler method to handle user registration form request
+=======
+    // handler method to handle user registration form request
+>>>>>>> Stashed changes
     @GetMapping("/register")
     public String showRegistrationForm1(Model model){
         // create model object to store form data
@@ -70,5 +74,13 @@ public class authController {
         List<StaffDto> staffDto = staffService.findAllUsers();
         model.addAttribute("staffDto", staffDto);
         return "users";
+<<<<<<< Updated upstream
+=======
+    } 
+    // handler method to handle login request
+    @GetMapping("/login")
+    public String login(){
+        return "index";
+>>>>>>> Stashed changes
     }
 }

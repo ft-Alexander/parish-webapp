@@ -29,9 +29,15 @@ public class SpringSecurity {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) ->
+<<<<<<< Updated upstream
                         authorize.requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
                                 .requestMatchers("/users/**").hasRole("ADMIN")
+=======
+                        authorize.requestMatchers("/","/register/**","/css/**").permitAll()
+                                .requestMatchers("/login").permitAll()
+                                .requestMatchers("/users").hasRole("ADMIN")
+>>>>>>> Stashed changes
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
