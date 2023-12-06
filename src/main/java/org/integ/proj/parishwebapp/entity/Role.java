@@ -6,7 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
 
 @Setter
 @Getter
@@ -14,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name="Role")
-public class Role
+public class Role implements GrantedAuthority
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +26,13 @@ public class Role
     @Column(nullable=false, unique=true)
     private String name;
 
-    @ManyToMany(mappedBy="roles")
-    private List<Staff> users;
+    
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    private List<Staff> users = new ArrayList<>();
+
+	@Override
+	public String getAuthority() {
+		// TODO Auto-generated method stub
+		return "ROLE_" + name;
+	}
 }

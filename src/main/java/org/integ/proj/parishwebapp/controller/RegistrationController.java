@@ -11,28 +11,20 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 
 @Controller
-public class authController {
+public class RegistrationController {
 	private StaffService staffService;
 	
 	
-	public authController(StaffService staffService) {
+	public RegistrationController(StaffService staffService) {
 		super();
 		this.staffService = staffService;
 	}
-<<<<<<< Updated upstream
-//	handler method to handle home page request
-    @GetMapping("/index")
-    public String home(){
-        return "index";
-    }
-//	handler method to handle user registration form request
-=======
-    // handler method to handle user registration form request
->>>>>>> Stashed changes
     @GetMapping("/register")
     public String showRegistrationForm1(Model model){
         // create model object to store form data
@@ -47,40 +39,27 @@ public class authController {
                                BindingResult result,
                                Model model){
         Staff existingUser = staffService.findUserByEmail(staffDto.getEmail());
-
+        
         if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
             result.rejectValue("email", null,
                     "There is already an account registered with the same email");
+            		return "redirect:/register?error";
         }
 
-//        if(result.hasErrors()){
-//            model.addAttribute("user", staffDto);
-//            return "/register";
-//        }
 
         staffService.saveUser(staffDto);
         return "redirect:/register?success";
     }
-    
-// 	handler method to handle login request
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
-    
-// 	handler method to handle list of users
     @GetMapping("/users")
     public String users(Model model){
         List<StaffDto> staffDto = staffService.findAllUsers();
         model.addAttribute("staffDto", staffDto);
         return "users";
-<<<<<<< Updated upstream
-=======
+
     } 
     // handler method to handle login request
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "index";
->>>>>>> Stashed changes
     }
 }

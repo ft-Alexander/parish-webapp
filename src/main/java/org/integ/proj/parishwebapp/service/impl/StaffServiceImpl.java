@@ -37,11 +37,11 @@ public class StaffServiceImpl implements StaffService{
 	        // encrypt the password using spring security
 	        staff.setPassword(passwordEncoder.encode(staffDto.getPassword()));
 	        staff.setEmployementDate(staffDto.getEmployementDate());
-	        Role role = roleRepository.findByName("ROLE_ADMIN");
+	        Role role = roleRepository.findByName("USER");
 	        if(role == null){
 	            role = checkRoleExist();
 	        }
-	        staff.setRoles(Arrays.asList(role));
+	        staff.setRole(role);
 	        staffRepository.save(staff);
 	    }
 
@@ -89,7 +89,7 @@ public class StaffServiceImpl implements StaffService{
 
 	    private Role checkRoleExist(){
 	        Role role = new Role();
-	        role.setName("ROLE_ADMIN");
+	        role.setName("ROLE_UNDEFINED");
 	        return roleRepository.save(role);
 	    }
 }

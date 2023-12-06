@@ -38,6 +38,11 @@
             You have successfully registered our app!
           </div>
       </div>
+      <div th:if="${param.error}">
+          <div class="alert alert-info">
+            There is already an account registered with the same email!
+          </div>
+      </div>
       <div class="card-body">
           <form
             method="post"

@@ -6,8 +6,8 @@ body{
 	font-family: 'Hedvig Letters Serif', serif;
 }
 #form{
-  min-width: 400px;
-  max-width:500px;
+	min-width:500px;
+  max-width:800px;
 }
 .gloss {
     padding: 2rem;
