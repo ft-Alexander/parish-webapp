@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<title>St. John The Baptist</title>
 </head>
 <body>
-
+	<nav class="bg-green-600">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            <a class="text-white text-lg font-bold" th:href="@{/dashboard}" >Welcome <span th:text="${user}"></span></a>
+            
+            <div class="lg:flex lg:items-center lg:w-auto">
+                <ul class="flex list-none space-x-4">
+                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/users/finance}">Finance</a></li>
+                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/users}">Staff</a></li>
+                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/logout}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+	
+	<div
+		class="container mx-auto p-8 flex flex-col md:flex-row items-center md:items-center">
+		<img class="w-full md:w-1/2 md:mr-8 mb-4 md:mb-0" alt="Blog Image"
+			src="https://placekitten.com/800/600" />
+		<div class="w-full md:w-1/2 flex flex-col justify-center">
+			<p class="text-lg font-semibold mb-4">Lorem Ipsum Blog Title</p>
+			<p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur
+				adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+				exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+				esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+				cupidatat non proident, sunt in culpa qui officia deserunt mollit
+				anim id est laborum.</p>
+		</div>
+	</div>
 </body>
 </html>

@@ -48,8 +48,13 @@ public class SpringSecurity {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/", "/register/**", "/css/**").permitAll()
 				.requestMatchers("/login", "/register").permitAll()
-				.requestMatchers("/users/**", "/dashboard").hasAnyRole("ADMIN")
-				.requestMatchers("/dashboard").hasRole("USER"))	
+				.requestMatchers("/dashboard").hasAnyRole("ADMIN","USER","FINANCE")
+				.requestMatchers("/users/finance/**").hasAnyRole("FINANCE","ADMIN")
+				.requestMatchers("/users","/users/**").hasRole("ADMIN"))
+				
+		
+				
+				
 				.formLogin(form -> 
 						form.loginPage("/login")
 						.loginProcessingUrl("/login")	
@@ -62,6 +67,7 @@ public class SpringSecurity {
 		
 		return http.getOrBuild();
 	}
+	
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

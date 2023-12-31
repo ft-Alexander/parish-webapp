@@ -1,28 +1,25 @@
-body{
-  background-image: url("https://wallpaperaccess.com/full/1371387.jpg");
+body {
+    background-image: url("https://wallpaperaccess.com/full/1371387.jpg");
 }
 
-.hedvig{
-	font-family: 'Hedvig Letters Serif', serif;
+.hedvig {
+    font-family: 'Hedvig Letters Serif', serif;
 }
-#form{
-	min-width:500px;
-  max-width:800px;
-}
+
 .gloss {
     padding: 2rem;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
     border-radius: 10px;
     position: relative;
     z-index: 1;
-    background: inherit;
     overflow: hidden;
+    min-width: 500px;
+    max-width: 800px;
 }
 
 .gloss:before {
     content: "";
     position: absolute;
-    background: inherit;
     z-index: -1;
     top: 0;
     left: 0;
@@ -30,29 +27,27 @@ body{
     bottom: 0;
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
     filter: blur(20px);
-/*     margin: -20px; */
+    background: transparent; /* Set background to transparent */
 }
 
-input{
-  border-bottom: solid 1px #474545;
+input {
+    border-bottom: solid 1px #474545;
 }
 
-input::placeholder{
-  font-style: italic;
+input::placeholder {
+    font-style: italic;
 }
 
-input:hover{
-  background-color: #E5E1E150;
+input:hover {
+    background-color: #E5E1E150;
 }
 
 /* Additional styles for input with autofill */
 input:-webkit-autofill {
-  box-shadow: 0 0 0 30px transparent inset;
+    box-shadow: 0 0 0 30px transparent inset;
 }
 
 /* Override default autofill background color */
-input:-webkit-autofill,
-input:-internal-autofill-selected {
-  background-color: transparent !important;
+input:-webkit-autofill, input:-internal-autofill-selected {
+    background-color: transparent !important;
 }
-

@@ -16,16 +16,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.integ.proj.parishwebapp.entity.Role;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
 
 
 @Service
 public class AuthenticationController implements UserDetailsService {
 
 	private StaffRepository staffRepository;
-
+	private Staff staff;
 	public AuthenticationController(StaffRepository staffRepository) {
 		this.staffRepository = staffRepository;
 	}
@@ -46,18 +49,15 @@ public class AuthenticationController implements UserDetailsService {
 	}
 
 	private Collection<? extends GrantedAuthority> mapRoleToAuthorities(Role role) {
-//		return Collections.singleton(new SimpleGrantedAuthority(role.getName()));
-		Set<GrantedAuthority> authorities = new HashSet<>();
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        System.out.print("Mapping role to authorities: " + role.getName());
+        // Assuming Role is an enum or has a method to get authority names
+        authorities.add(new SimpleGrantedAuthority(role.getName()));
 
-	    // Add authorities based on the role
-	    if (role != null) {
-	        authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
-	    }
+        // Add more authorities as needed based on your application logic
 
-	    // You can add more authorities as needed
-	    authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-	    authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-
-	    return authorities;
-	}
+        return authorities;
+    }
+	
+	
 }

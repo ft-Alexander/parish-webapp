@@ -1,7 +1,11 @@
 package org.integ.proj.parishwebapp.controller;
 
+import java.util.List;
+
+import org.integ.proj.parishwebapp.dto.StaffDto;
 import org.integ.proj.parishwebapp.entity.Staff;
 import org.integ.proj.parishwebapp.service.StaffService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class StaffInformationController {
 	private StaffService staffService;
+	
+	
 	
 	public StaffInformationController(StaffService staffService) {
 		super();
@@ -41,7 +47,7 @@ public class StaffInformationController {
     	return "redirect:/users";
     }
 
-//	handler method to handle deletion of registered data
+
     @GetMapping("/users/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
     	staffService.deleteUserById(id);

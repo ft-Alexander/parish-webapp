@@ -6,11 +6,16 @@ import org.integ.proj.parishwebapp.entity.Staff;
 import org.integ.proj.parishwebapp.repository.RoleRepository;
 import org.integ.proj.parishwebapp.repository.StaffRepository;
 import org.integ.proj.parishwebapp.service.StaffService;
+import org.springframework.data.util.Streamable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,19 +33,22 @@ public class StaffServiceImpl implements StaffService{
 
 	    @Override
 	    public void saveUser(StaffDto staffDto) {
-	        Staff staff = new Staff();
+	    	Staff staff = new Staff();
 	        staff.setFname(staffDto.getFname());
 	        staff.setMname(staffDto.getMname());
 	        staff.setLname(staffDto.getLname());
-	        staff.setName(staffDto.getFname() + " " + staffDto.getMname()+" "+staffDto.getLname());
+	        staff.setName(staffDto.getFname() + " " + staffDto.getMname() + " " + staffDto.getLname());
 	        staff.setEmail(staffDto.getEmail());
 	        // encrypt the password using spring security
 	        staff.setPassword(passwordEncoder.encode(staffDto.getPassword()));
 	        staff.setEmployementDate(staffDto.getEmployementDate());
-	        Role role = roleRepository.findByName("USER");
-	        if(role == null){
-	            role = checkRoleExist();
+
+	        // Find or create the "ROLE_USER" role
+	        Role role = roleRepository.findByName("ROLE_USER");
+	        if (role == null) {
+	            role = createRole("ROLE_USER");
 	        }
+
 	        staff.setRole(role);
 	        staffRepository.save(staff);
 	    }
@@ -87,9 +95,12 @@ public class StaffServiceImpl implements StaffService{
 	        return staffDto;
 	    }
 
-	    private Role checkRoleExist(){
+	    private Role createRole(String roleName) {
 	        Role role = new Role();
-	        role.setName("ROLE_UNDEFINED");
+	        role.setName(roleName);
 	        return roleRepository.save(role);
 	    }
+
+
+		
 }

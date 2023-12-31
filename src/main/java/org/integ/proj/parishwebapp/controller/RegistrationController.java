@@ -5,6 +5,7 @@ import java.util.List;
 import org.integ.proj.parishwebapp.dto.StaffDto;
 import org.integ.proj.parishwebapp.entity.Staff;
 import org.integ.proj.parishwebapp.service.StaffService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -50,13 +51,14 @@ public class RegistrationController {
         staffService.saveUser(staffDto);
         return "redirect:/register?success";
     }
+    
     @GetMapping("/users")
-    public String users(Model model){
-        List<StaffDto> staffDto = staffService.findAllUsers();
-        model.addAttribute("staffDto", staffDto);
+    public String users(Model model,@Param("keyword") String keyword){
+    		List<StaffDto> staffDto = staffService.findAllUsers();
+    		model.addAttribute("staffDto", staffDto);
         return "users";
-
     } 
+    
     // handler method to handle login request
     @GetMapping("/login")
     public String login() {
