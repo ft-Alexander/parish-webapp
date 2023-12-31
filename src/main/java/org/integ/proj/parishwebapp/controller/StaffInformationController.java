@@ -81,10 +81,16 @@ public class StaffInformationController {
 		return "redirect:/users";
 	}
 
+//	@GetMapping("/users/{id}")
+//	public String showDeleteConfirmationPage(@PathVariable("id") Long id, Model model) {
+//	    model.addAttribute("userId", id);
+//	    return "delete-confirmation";
+//	}
+
 	@GetMapping("/users/{id}")
 	public String deleteUser(@PathVariable("id") Long id) {
-		staffService.deleteUserById(id);
-		return "redirect:/users";
+	    staffService.deleteUserById(id);
+	    return "redirect:/users";
 	}
 	
 	
