@@ -2,24 +2,17 @@ package org.integ.proj.parishwebapp.controller;
 
 import org.integ.proj.parishwebapp.entity.Staff;
 import org.integ.proj.parishwebapp.repository.StaffRepository;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.integ.proj.parishwebapp.entity.Role;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -28,7 +21,6 @@ import java.util.Set;
 public class AuthenticationController implements UserDetailsService {
 
 	private StaffRepository staffRepository;
-	private Staff staff;
 	public AuthenticationController(StaffRepository staffRepository) {
 		this.staffRepository = staffRepository;
 	}

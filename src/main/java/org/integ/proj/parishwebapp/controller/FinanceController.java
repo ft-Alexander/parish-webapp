@@ -1,10 +1,13 @@
 package org.integ.proj.parishwebapp.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.integ.proj.parishwebapp.entity.Finance;
+import org.integ.proj.parishwebapp.entity.Staff;
 import org.integ.proj.parishwebapp.dto.FinanceDto;
 import org.integ.proj.parishwebapp.service.FinanceService;
+import org.integ.proj.parishwebapp.service.StaffService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,24 +16,34 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 public class FinanceController {
 	private FinanceService financeService;
+	private StaffService staffService;
 	
 	public FinanceController(FinanceService financeService) {
 		super();
 		this.financeService = financeService;
 	}
 //	handler method to handle finance form
-    @GetMapping("/users/finance")
-    public String finance(Model model) {
+    @GetMapping("/finance")
+    public String finance(Model model, HttpServletRequest request) {
     	List<FinanceDto> financeDto = financeService.findAllRecords();
     	model.addAttribute("financeDto", financeDto);
+    	
+    	Principal principal = request.getUserPrincipal();
+		Staff staff = new Staff();
+		staff = staffService.findUserByEmail(principal.getName());
+		
+		model.addAttribute("user",staff.getFname());
+		System.out.println(staff.getFname());
     	return "finance";
     }
     
 //	handler method to handle new financial record request
-	@GetMapping("/users/finance/add-financial-record")
+	@GetMapping("/finance/add-financial-record")
 	public String addFinancialRecord(Model model) {
 		FinanceDto fRecord = new FinanceDto();
 		model.addAttribute("fRecord", fRecord);

@@ -8,7 +8,8 @@
 <body>
 <nav class="bg-green-600">
         <div class="container mx-auto flex items-center justify-between p-4">
-            <a class="text-white text-lg font-bold" th:href="@{/dashboard}">St. John The Baptist</a>
+            <a class="text-white text-lg font-bold" th:href="@{/dashboard}" >Welcome <span th:text="${user}"></span></a>
+            
             <div class="lg:flex lg:items-center lg:w-auto">
                 <ul class="flex list-none space-x-4">
                     <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/users/finance}">Finance</a></li>

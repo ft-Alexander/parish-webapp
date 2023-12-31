@@ -11,7 +11,8 @@
 
     <nav class="bg-green-600">
         <div class="container mx-auto flex items-center justify-between p-4">
-            <a class="text-white text-lg font-bold" th:href="@{/dashboard}">St. John The Baptist</a>
+            <a class="text-white text-lg font-bold" th:href="@{/dashboard}" >Welcome <span th:text="${user}"></span></a>
+            
             <div class="lg:flex lg:items-center lg:w-auto">
                 <ul class="flex list-none space-x-4">
                     <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/users/finance}">Finance</a></li>
@@ -29,9 +30,10 @@
             <h2 th:valu=@{user.mname}></h2>
         </div>
         <div class="mb-3">
-           <form th:action="@{/users}" method="get">
-            <input type="text" name="query" placeholder="Enter your search query" class="p-2 border border-gray-300 rounded" required/>
+           <form th:action="@{/users/search}" method="get">
+            <input type="text" id="keyword" name="keyword" th:value="${keyword}" placeholder="Enter your search query" class="p-2 border border-gray-300 rounded" required/>
             <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
+            <input type="button" value="Clear" id="btnClear" class="bg-green-500 text-white px-4 py-2 rounded" onclick="clearSearch()" />
         </form>
         </div>
         <table class="min-w-full bg-white border border-gray-300">
@@ -62,6 +64,11 @@
             </tbody>
         </table>
     </div>
+    <script type="text/javascript">
+    function clearSearch() {
+        window.location = "/users";
+    }
+</script>
 
 </body>
 

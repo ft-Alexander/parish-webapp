@@ -19,4 +19,6 @@ public interface StaffService {
 	 Staff findUserById(Long id);
 	    
 	 Staff editUser(Staff staff);
+	 
+	 List<Staff> search(String keyword);
 }

@@ -101,6 +101,14 @@ public class StaffServiceImpl implements StaffService{
 	        return roleRepository.save(role);
 	    }
 
+		@Override
+		public List<Staff> search(String keyword) {
+			if(keyword != null) {
+				return staffRepository.search(keyword);
+			}
+			return staffRepository.findAll();
+		}
+
 
 		
 }

@@ -52,12 +52,6 @@ public class RegistrationController {
         return "redirect:/register?success";
     }
     
-    @GetMapping("/users")
-    public String users(Model model,@Param("keyword") String keyword){
-    		List<StaffDto> staffDto = staffService.findAllUsers();
-    		model.addAttribute("staffDto", staffDto);
-        return "users";
-    } 
     
     // handler method to handle login request
     @GetMapping("/login")
