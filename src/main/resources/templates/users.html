@@ -2,80 +2,125 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Parish Information Management System</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parish Information Management System</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+	rel="stylesheet">
 </head>
 
 <body class="font-sans bg-gray-100">
 
-    <nav class="bg-green-600">
-        <div class="container mx-auto flex items-center justify-between p-4">
-            <a class="text-white text-lg font-bold" th:href="@{/dashboard}" >Welcome <span th:text="${user}"></span></a>
-            
-            <div class="lg:flex lg:items-center lg:w-auto">
-                <ul class="flex list-none space-x-4">
-                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/users/finance}">Finance</a></li>
-                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/users}">Staff</a></li>
-                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/logout}">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	<nav class="bg-green-600">
+		<div class="container mx-auto flex items-center justify-between p-4">
+			<a class="text-white text-lg font-bold" th:href="@{/dashboard}">Welcome
+				<span th:text="${user}"></span>
+			</a>
 
-    <div class="container mx-auto my-8 p-8 bg-white rounded shadow-md">
+			<div class="lg:flex lg:items-center lg:w-auto">
+				<ul class="flex list-none space-x-4">
+					<li class="nav-item"><a
+						class="text-white hover:text-gray-300 px-3 py-2"
+						th:href="@{/users/finance}">Finance</a></li>
+					<li class="nav-item"><a
+						class="text-white hover:text-gray-300 px-3 py-2"
+						th:href="@{/users}">Staff</a></li>
+					<li class="nav-item"><a
+						class="text-white hover:text-gray-300 px-3 py-2"
+						th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-        <div class="mb-8 text-center">
-            <h2 class="text-4xl font-bold text-green-600">List of Registered Users</h2>
-            <h2 th:valu=@{user.mname}></h2>
-        </div>
-        <div class="mb-3">
-           <form th:action="@{/users/search}" method="get">
-            <input type="text" id="keyword" name="keyword" th:value="${keyword}" placeholder="Enter your search query" class="p-2 border border-gray-300 rounded" required/>
-            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
-            <input type="button" value="Clear" id="btnClear" class="bg-green-500 text-white px-4 py-2 rounded" onclick="clearSearch()" />
-        </form>
-        </div>
-        <table class="min-w-full bg-white border border-gray-300">
-            <thead>
-                <tr>
-                    <th class="py-3 px-6 bg-gray-100 text-left text-sm font-semibold text-gray-700 border-b">ID</th>
-                    <th class="py-3 px-6 bg-gray-100 text-left text-sm font-semibold text-gray-700 border-b">First Name</th>
-                    <th class="py-3 px-6 bg-gray-100 text-left text-sm font-semibold text-gray-700 border-b">Middle Name</th>
-                    <th class="py-3 px-6 bg-gray-100 text-left text-sm font-semibold text-gray-700 border-b">Last Name</th>
-                    <th class="py-3 px-6 bg-gray-100 text-left text-sm font-semibold text-gray-700 border-b">Email</th>
-                    <th class="py-3 px-6 bg-gray-100 text-left text-sm font-semibold text-gray-700 border-b">Employment Date</th>
-                    <th class="py-3 px-6 bg-gray-100 text-left text-sm font-semibold text-gray-700 border-b">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="staff : ${staffDto}" class="hover:bg-gray-100">
-                    <td class="py-4 px-6 border-b" th:text="${staff.id}"></td>
-                    <td class="py-4 px-6 border-b" th:text="${staff.fname}"></td>
-                    <td class="py-4 px-6 border-b" th:text="${staff.mname}"></td>
-                    <td class="py-4 px-6 border-b" th:text="${staff.lname}"></td>
-                    <td class="py-4 px-6 border-b" th:text="${staff.email}"></td>
-                    <td class="py-4 px-6 border-b" th:text="${staff.employementDate}"></td>
-                    <td class="py-4 px-6 border-b">
-                        <a th:href="@{/users/edit/{id}(id=${staff.id})}" class="text-blue-600 hover:underline mr-2">Edit</a>
-                        <a th:href="@{/users/{id}(id=${staff.id})}" class="text-red-600 hover:underline" onclick="return confirmDelete()">Delete</a>
+	<div
+		class="container mx-auto my-8 p-4 lg:p-8 bg-white rounded shadow-md">
 
+		<div class="mb-4 lg:mb-8 text-center">
+			<h2 class="text-2xl lg:text-4xl font-bold text-green-600">List
+				of Registered Users</h2>
+			<h2 th:valu=@{user.mname}></h2>
+		</div>
+		<div class="mb-4">
+			<form th:action="@{/users/search}" method="get">
+				<input type="text" id="keyword" name="keyword" th:value="${keyword}"
+					placeholder="Enter your search query"
+					class="p-2 border border-gray-300 rounded" required />
+				<button type="submit"
+					class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
+				<input type="button" value="Clear" id="btnClear"
+					class="bg-green-500 text-white px-4 py-2 rounded"
+					onclick="clearSearch()" />
+				<input type="button"
+					value="Asc First Name" id="ASC"
+					class="bg-green-500 text-white px-4 py-2 rounded"
+					onclick="ascFirstName(document.getElementById('keyword').value)" />
+			</form>
 
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <script type="text/javascript">
-    function clearSearch() {
-        window.location = "/users";
-    }
-    function confirmDelete() {
-        var confirmDelete = confirm("Are you sure you want to delete this user?");
-        return confirmDelete;
-      }
+		</div>
+		<div class="overflow-x-auto">
+			<table class="min-w-full bg-white border border-gray-300">
+				<thead>
+					<tr>
+						<th
+							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">ID</th>
+						<th
+							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">First
+							Name</th>
+						<th
+							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Middle
+							Name</th>
+						<th
+							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Last
+							Name</th>
+						<th
+							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Email</th>
+						<th
+							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Employment
+							Date</th>
+						<th
+							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="staff : ${staffDto}" class="hover:bg-gray-100">
+						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.id}"></td>
+						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.fname}"></td>
+						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.mname}"></td>
+						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.lname}"></td>
+						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.email}"></td>
+						<td class="py-2 lg:py-4 px-6 border-b"
+							th:text="${staff.employementDate}"></td>
+						<td class="py-2 lg:py-4 px-6 border-b"><a
+							th:href="@{/users/edit/{id}(id=${staff.id})}"
+							class="text-blue-600 hover:underline mr-2">Edit</a> 
+							<a
+							th:href="@{/users/view/{id}(id=${staff.id})}"
+							class="text-green-600 hover:underline mr-2">View</a>
+							<a th:href="@{/users/{id}(id=${staff.id})}"
+							class="text-red-600 hover:underline"
+							onclick="return confirmDelete()">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function clearSearch() {
+			window.location = "/users";
+		}
 
-</script>
+		function confirmDelete() {
+			var confirmDelete = confirm("Are you sure you want to delete this user?");
+			return confirmDelete;
+		}
+
+		function ascFirstName() {
+			var keyword = document.getElementById('keyword').value;
+		    window.location = "/users/ascFirstName?keyword=" + encodeURIComponent(keyword);
+		}
+	</script>
 
 </body>
 

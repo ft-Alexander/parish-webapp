@@ -47,6 +47,20 @@ public class Staff {
     @Column(nullable=false)
     private String password;
     
+    @Column
+    private LocalDate birthdate;
+
+    
+    @Column
+    private String phoneNumber;
+    
+    @Column
+    private String address;
+    
+    @Column
+    private String position;
+    
+    
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")
     private Role role;

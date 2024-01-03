@@ -63,10 +63,10 @@ public class StaffServiceImpl implements StaffService{
 	    	return staffRepository.findById(id).get();
 	    }
 	    
-	    @Override
-	    public Staff editUser(Staff staff) {
-	    	return staffRepository.save(staff);
-	    }
+//	    @Override
+//	    public Staff editUser(Staff staff) {
+//	    	return staffRepository.save(staff);
+//	    }
 	    
 	    @Override
 	    public void deleteUserById(Long id) {
@@ -107,6 +107,25 @@ public class StaffServiceImpl implements StaffService{
 				return staffRepository.search(keyword);
 			}
 			return staffRepository.findAll();
+		}
+
+		@Override
+		public void editUser(Staff userData, Long id) {
+			Staff existingUser = findUserById(id);
+			existingUser.setFname(userData.getFname());
+			existingUser.setMname(userData.getMname());
+			existingUser.setLname(userData.getLname());
+			existingUser.setEmail(userData.getEmail());
+			existingUser.setEmployementStatus(userData.getEmployementStatus());
+			existingUser.setAddress(userData.getAddress());
+			existingUser.setBirthdate(userData.getBirthdate());
+			existingUser.setPhoneNumber(userData.getPhoneNumber());
+			existingUser.setPosition(userData.getPosition());
+			Role role = roleRepository.findByName(userData.getRole().getName());
+			existingUser.setRole(role);
+			System.out.println(role);
+			System.out.println(userData.getRole().getName());
+			staffRepository.save(existingUser);			
 		}
 
 

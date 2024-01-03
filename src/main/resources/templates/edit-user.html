@@ -10,55 +10,118 @@
 
 <body class="bg-gray-100">
 	<div class="flex h-screen items-center justify-center">
-		<div class="w-full max-w-md rounded bg-white p-6 shadow-md">
-			<h2 class="mb-4 text-2xl font-bold">Edit User</h2>
+		<div
+			class="w-full max-w-2xl mx-4 md:mx-auto rounded bg-white p-14 shadow-md">
+			<h2 class="mb-4 text-center text-2xl font-bold">Edit User</h2>
 			<form method="post" role="form" th:object="${userData}"
+				enctype="multipart/form-data"
 				th:action="@{/users/edit/{id}(id=${userData.id})}" class="space-y-4">
-				<div>
-					<label class="block text-sm font-medium text-gray-600">First
-						Name</label> <input type="text" id="fname" name="fname"
-						th:field="*{fname}" placeholder="Enter first name" required
-						class="mt-1 w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
-					<p th:errors="*{fname}" th:if="${#fields.hasErrors('fname')}"
+
+				<!-- First Row: First Name, Middle Name, Last Name -->
+				<div class="grid grid-cols-3 gap-4">
+					<div class="mb-4">
+						<label for="fname" class="block text-sm font-medium text-gray-600">First
+							Name</label> <input type="text" id="fname" name="fname"
+							th:field="*{fname}" placeholder="Enter first name" required
+							class="w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
+						<p th:errors="*{fname}" th:if="${#fields.hasErrors('fname')}"
+							class="mt-1 text-sm text-red-500"></p>
+					</div>
+
+					<div class="mb-4">
+						<label for="mname" class="block text-sm font-medium text-gray-600">Middle
+							Name</label> <input type="text" id="mname" name="mname"
+							th:field="*{mname}" placeholder="Enter middle name" required
+							class="w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
+						<p th:errors="*{mname}" th:if="${#fields.hasErrors('mname')}"
+							class="mt-1 text-sm text-red-500"></p>
+					</div>
+
+					<div class="mb-4">
+						<label for="lname" class="block text-sm font-medium text-gray-600">Last
+							Name</label> <input type="text" id="lname" name="lname"
+							th:field="*{lname}" placeholder="Enter last name" required
+							class="w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
+						<p th:errors="*{lname}" th:if="${#fields.hasErrors('lname')}"
+							class="mt-1 text-sm text-red-500"></p>
+					</div>
+				</div>
+
+				<!-- Second Row: Phone Number, Position, Birthday -->
+				<div class="grid grid-cols-3 gap-4">
+					<div class="mb-4">
+						<label for="phoneNumber"
+							class="block text-sm font-medium text-gray-600">Phone
+							Number</label> <input type="tel" id="phoneNumber" name="phoneNumber"
+							th:field="*{phoneNumber}" placeholder="09xxxxxxxxx"
+							pattern="09\d{9}"
+							title="Please enter a valid 11-digit phone number starting with '09'"
+							required
+							class="w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
+						<p th:errors="*{phoneNumber}"
+							th:if="${#fields.hasErrors('phoneNumber')}"
+							class="mt-1 text-sm text-red-500"></p>
+					</div>
+
+					<div class="mb-4">
+						<label for="position"
+							class="block text-sm font-medium text-gray-600">Position</label>
+						<input type="text" id="position" name="position"
+							th:field="*{position}" placeholder="Enter Position" required
+							class="w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
+						<p th:errors="*{position}"
+							th:if="${#fields.hasErrors('position')}"
+							class="mt-1 text-sm text-red-500"></p>
+					</div>
+
+					<div class="mb-4">
+						<label for="birthdate"
+							class="block text-sm font-medium text-gray-600">Birthday</label>
+						<input type="date" id="birthdate" name="birthdate"
+							th:value="*{birthdate}" placeholder="Enter Birthday" required
+							class="w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
+						<p th:errors="*{birthdate}"
+							th:if="${#fields.hasErrors('birthdate')}"
+							class="mt-1 text-sm text-red-500"></p>
+					</div>
+				</div>
+
+				<!-- Third Row: Employment Status, Email -->
+				<div class="grid grid-cols-2 gap-4">
+					<div class="mb-4">
+						<label for="status"
+							class="block text-sm font-medium text-gray-600">Employment
+							Status</label> <select th:field="*{employementStatus}" name="status"
+							id="status"
+							class="w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring"
+							required>
+							<option value="Active" class="text-gray-800">Active</option>
+							<option value="Inactive" class="text-gray-800">Inactive</option>
+						</select>
+					</div>
+
+					<div class="mb-4">
+						<label for="email" class="block text-sm font-medium text-gray-600">Email</label>
+						<input type="email" id="email" name="email" th:field="*{email}"
+							placeholder="Enter email address" required
+							class="w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
+						<p th:errors="*{email}" th:if="${#fields.hasErrors('email')}"
+							class="mt-1 text-sm text-red-500"></p>
+					</div>
+				</div>
+
+				<!-- Fourth Row: Address -->
+				<div class="mb-4">
+					<label for="address"
+						class="block text-sm font-medium text-gray-600">Address</label> <input
+						type="text" id="address" name="address" th:field="*{address}"
+						placeholder="Enter Address" required
+						class="w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
+					<p th:errors="*{address}" th:if="${#fields.hasErrors('address')}"
 						class="mt-1 text-sm text-red-500"></p>
 				</div>
 
-				<div>
-					<label class="block text-sm font-medium text-gray-600">Middle
-						Name</label> <input type="text" id="mname" name="mname"
-						th:field="*{mname}" placeholder="Enter middle name" required
-						class="mt-1 w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
-					<p th:errors="*{mname}" th:if="${#fields.hasErrors('mname')}"
-						class="mt-1 text-sm text-red-500"></p>
-				</div>
-
-				<div>
-					<label class="block text-sm font-medium text-gray-600">Last
-						Name</label> <input type="text" id="lname" name="lname"
-						th:field="*{lname}" placeholder="Enter last name" required
-						class="mt-1 w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
-					<p th:errors="*{lname}" th:if="${#fields.hasErrors('lname')}"
-						class="mt-1 text-sm text-red-500"></p>
-				</div>
-
-				<div>
-					<label class="block text-sm font-medium text-gray-600">Email</label>
-					<input type="email" id="email" name="email" th:field="*{email}"
-						placeholder="Enter email address" required
-						class="mt-1 w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
-					<p th:errors="*{email}" th:if="${#fields.hasErrors('email')}"
-						class="mt-1 text-sm text-red-500"></p>
-				</div>
-				<div class="mt-4">
-					<label for="status" class="block text-sm font-medium text-gray-600">Employment
-						Status</label> <select th:field="*{employementStatus}" name="status"
-						id="status"
-						class="mt-1 w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring"
-						required>
-						<option value="Active" class="text-gray-800">Active</option>
-						<option value="Inactive" class="text-gray-800">Inactive</option>
-					</select>
-				</div>
+				<!-- Fifth Row: Position -->
 				<div class="mt-4">
 					<label for="role" class="block text-sm font-medium text-gray-600">Role</label>
 					<select th:field="*{role}" name="role" id="role"
@@ -70,8 +133,7 @@
 						<option value=4 class="text-gray-800">Executive Assistant</option>
 					</select>
 				</div>
-
-
+				<!-- Buttons -->
 				<div class="flex items-center">
 					<button type="submit"
 						class="rounded bg-green-600 p-2 text-white focus:border-blue-300 focus:outline-none focus:ring">Submit
