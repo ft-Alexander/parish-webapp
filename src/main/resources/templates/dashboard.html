@@ -1,40 +1,180 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <script src="https://cdn.tailwindcss.com"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+	rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.0.9/dist/css/splide.min.css">
 <title>St. John The Baptist</title>
 </head>
-<body>
-	<nav class="bg-green-600">
-        <div class="container mx-auto flex items-center justify-between p-4">
-            <a class="text-white text-lg font-bold" th:href="@{/dashboard}" >Welcome <span th:text="${user}"></span></a>
-            
-            <div class="lg:flex lg:items-center lg:w-auto">
-                <ul class="flex list-none space-x-4">
-                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/users/finance}">Finance</a></li>
-                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/users}">Staff</a></li>
-                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/logout}">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-	
+
+<body class="bg-gray-100 font-sans">
+	<nav
+		class="bg-gradient-to-r from-green-500 to-green-700 text-white shadow-md">
+		<div
+			class="container mx-auto flex flex-col items-center justify-between p-4 lg:flex-row">
+			<a
+				class="mb-4 flex items-center rounded px-3 py-2 text-lg transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800 lg:mb-0"
+				th:href="@{/dashboard}"> <i class="material-icons mr-2 text-2xl">account_circle</i>
+				<span class="text-white-500 text-lg font-light italic">WELCOME!&nbsp;</span>
+				<span class="text-gray font-semibold" th:text="${user}"></span>
+			</a>
+
+			<div class="lg:flex lg:w-auto lg:items-center">
+				<ul class="flex list-none space-x-4">
+					<li class="nav-item"><a
+						class="rounded px-3 py-2 transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800"
+						th:href="@{/finance}">Finance</a></li>
+					<li class="nav-item"><a
+						class="rounded px-3 py-2 transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800"
+						th:href="@{/users}">Staff</a></li>
+					<li class="nav-item"><a
+						class="rounded px-3 py-2 transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800"
+						th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
 	<div
-		class="container mx-auto p-8 flex flex-col md:flex-row items-center md:items-center">
-		<img class="w-full md:w-1/2 md:mr-8 mb-4 md:mb-0" alt="Blog Image"
-			src="https://placekitten.com/800/600" />
-		<div class="w-full md:w-1/2 flex flex-col justify-center">
-			<p class="text-lg font-semibold mb-4">Lorem Ipsum Blog Title</p>
-			<p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur
-				adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-				dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-				exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-				esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-				cupidatat non proident, sunt in culpa qui officia deserunt mollit
-				anim id est laborum.</p>
+		class="container mx-auto mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+		<!-- Box 1 -->
+		<div class="flex justify-center rounded bg-gray-200 p-4">
+			<i class="material-icons mb-2 mr-2 text-2xl text-blue-500">person</i>
+			<div>
+				<h2 class="mb-2 text-xl font-light italic text-gray-700">Number
+					of Staff:&nbsp;</h2>
+			</div>
+			<span class="text-xl font-semibold text-blue-500"
+				th:text="${staffCount}"></span>
+		</div>
+
+		<!-- Box 2 -->
+		<div class="flex justify-center rounded bg-gray-200 p-4">
+			<i class="material-icons mb-2 mr-2 text-2xl text-green-500">attach_money</i>
+			<div>
+				<h2 class="mb-2 text-xl font-light italic text-gray-700">Finance
+					Entries:&nbsp;</h2>
+			</div>
+			<span class="text-xl font-semibold text-green-500"
+				th:text="${staffCount}"></span>
+		</div>
+
+		<!-- Box 3 -->
+		<div class="flex justify-center rounded bg-gray-200 p-4">
+			<i class="material-icons mb-2 mr-2 text-2xl text-red-500">today</i>
+			<div>
+				<h2 class="mb-2 text-xl font-light italic text-gray-700">No. of
+					Schedules Today:&nbsp;</h2>
+			</div>
+			<span class="text-xl font-semibold text-red-500"
+				th:text="${staffCount}"></span>
+		</div>
+
+		<!-- Box 4 -->
+		<div class="flex justify-center rounded bg-gray-200 p-4">
+			<i class="material-icons mb-2 mr-2 text-2xl text-indigo-500">description</i>
+			<div>
+				<h2 class="mb-2 text-xl font-light italic text-gray-700">Documents
+					Stored:&nbsp;</h2>
+			</div>
+			<span class="text-xl font-semibold text-indigo-500"
+				th:text="${staffCount}"></span>
 		</div>
 	</div>
+	<br/><br/>
+	
+	<div class="container mx-auto mt-4 lg:flex items-center">
+		<!-- Carousel Section (Left) -->
+		<div class="lg:w-1/2">
+			<div id="image-carousel" class="splide rounded-lg overflow-hidden">
+				<div class="splide__track">
+					<div class="splide__list">
+						<!-- Add your carousel images here -->
+						<div class="splide__slide">
+							<img src="https://picsum.photos/800/400?random=1" alt="Image 1">
+						</div>
+						<div class="splide__slide">
+							<img src="https://picsum.photos/800/400?random=2" alt="Image 2">
+						</div>
+						<!-- Add more slides as needed -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Dummy Text Section (Right) -->
+		<div class="lg:w-1/2 mt-4 lg:mt-0">
+			<div class="flex justify-center rounded p-4">
+				<div>
+					<p class="text-gray-700 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+						felis sapien, accumsan et maximus id, ultrices quis felis. Nam
+						felis mauris, mollis nec neque id, aliquet tincidunt odio. Fusce
+						ornare urna ac tempor facilisis. Quisque ultrices commodo urna ac
+						condimentum. In sagittis lorem nec ex venenatis porttitor eget
+						mattis velit. Curabitur ac tortor pulvinar, accumsan urna a,
+						porttitor ligula. Nullam volutpat lacus at consectetur commodo.
+						Fusce ultrices tortor eu libero tristique, ut vestibulum lectus
+						luctus. Quisque vel posuere leo. Suspendisse auctor leo suscipit
+						felis lacinia, non rutrum orci pellentesque. Nam posuere purus
+						tellus. Phasellus scelerisque, lacus quis viverra fermentum, ante
+						lectus mollis quam, in elementum nulla lectus at est.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="bg-gray-100 p-6 rounded-lg mt-8">
+    <h4 class="text-3xl text-center font-bold text-green-600 mb-6">INFORMATIONS</h4>
+    <p class="text-gray-700 leading-relaxed">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices magna non sapien fermentum
+        rhoncus. Nulla feugiat ipsum sit amet ligula posuere, at venenatis eros fermentum. Etiam finibus
+        suscipit dui, non congue metus rhoncus ut. Cras vitae erat nec risus molestie luctus. Praesent maximus
+        auctor laoreet. Curabitur at nulla sit amet nunc pulvinar consequat ut sit amet mi. Etiam vestibulum,
+        diam vel maximus tristique, ligula quam luctus augue, sed maximus nibh mi non enim. Aliquam at
+        elementum nunc, a facilisis justo. Aenean vel mattis nulla, id scelerisque enim. Donec fermentum
+        commodo quam a condimentum. Sed ultricies lacus ac porttitor ultrices. Phasellus nec porta sem. Sed
+        odio tortor, rhoncus vel aliquet sit amet, dapibus vitae metus. Vestibulum maximus purus eget ipsum
+        accumsan varius. Vestibulum ut risus vel odio pellentesque interdum. Pellentesque eu efficitur purus,
+        eleifend tincidunt ante. Vestibulum efficitur tellus a diam sagittis, ac elementum lacus tincidunt.
+        Praesent hendrerit consequat eros, vitae maximus nulla placerat vel. Nulla fermentum ut odio nec
+        tincidunt. Suspendisse imperdiet tortor ac ipsum ornare convallis. Aenean tincidunt consequat vulputate.
+        Nunc ac malesuada tellus. Phasellus quis mattis metus. Pellentesque venenatis nunc vitae nunc
+        suscipit, ac dapibus mauris tincidunt. Suspendisse nec tincidunt dolor. Sed malesuada eros eget velit
+        placerat, at scelerisque lorem varius. Quisque a mollis elit. Cras nec justo facilisis, sodales leo
+        vel, feugiat diam. Sed vestibulum quis lacus id venenatis. Vestibulum ante ipsum primis in faucibus
+        orci luctus et ultrices posuere cubilia curae; Curabitur elit libero, porta nec elit at, scelerisque
+        tempus nisi. Nulla euismod pellentesque magna a convallis. Class aptent taciti sociosqu ad litora
+        torquent per conubia nostra, per inceptos himenaeos. Interdum et malesuada fames ac ante ipsum primis
+        in faucibus. Curabitur et aliquet purus, id condimentum magna. Nam feugiat sem eu dignissim elementum.
+        Duis tincidunt dictum leo. Cras quis libero sapien. Nulla semper nec justo ut condimentum. Cras ut
+        pharetra elit. Praesent a tristique tellus, sit amet commodo justo. Curabitur vitae felis magna. Morbi
+        quis libero at orci fermentum sodales. Nunc vel sapien justo. Phasellus vel vulputate urna.
+    </p>
+</div>
+	
+
+	<!-- Splide JS (Include at the end of the body) -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.0.9/dist/js/splide.min.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			new Splide('#image-carousel', {
+				type : 'fade',
+				heightRatio : 0.5,
+				pagination : false,
+				arrows : false,
+				rewind : true,
+				autoplay : true, // Enable automatic sliding
+				interval : 4000,
+			}).mount();
+		});
+	</script>
+
 </body>
 </html>

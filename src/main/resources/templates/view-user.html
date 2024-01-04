@@ -5,93 +5,126 @@
 <title>Parish Information Management System</title>
 <!-- Include Tailwind CSS stylesheet -->
 <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
 </head>
 
 <body class="bg-gray-100">
-    <div class="flex h-screen items-center justify-center">
-        <div class="w-full max-w-2xl mx-4 md:mx-auto rounded bg-white p-14 shadow-md">
-            <h2 class="mb-4 text-center text-2xl font-bold">View User</h2>
-            <form class="space-y-4">
-                <!-- First Row: First Name, Middle Name, Last Name -->
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="mb-4">
-                        <label for="fname" class="block text-sm font-medium text-gray-600">First Name</label>
-                        <input type="text" id="fname" name="fname" th:value="${userData.fname}" readonly
-                            class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
-                    </div>
+	<div class="flex h-screen items-center justify-center">
+		<div
+			class="w-full max-w-2xl mx-4 md:mx-auto rounded bg-white p-14 shadow-md">
+			<h2 class="mb-4 text-center text-2xl font-bold">View User</h2>
+			<form class="space-y-4">
+				<!-- First Row: First Name, Middle Name, Last Name -->
+				<div class="grid grid-cols-3 gap-4">
+					<div class="mb-4">
+						<label for="fname" class="block text-sm font-medium text-gray-600">First
+							Name</label> <input type="text" id="fname" name="fname"
+							th:value="${userData.fname}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
 
-                    <div class="mb-4">
-                        <label for="mname" class="block text-sm font-medium text-gray-600">Middle Name</label>
-                        <input type="text" id="mname" name="mname" th:value="${userData.mname}" readonly
-                            class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
-                    </div>
+					<div class="mb-4">
+						<label for="mname" class="block text-sm font-medium text-gray-600">Middle
+							Name</label> <input type="text" id="mname" name="mname"
+							th:value="${userData.mname}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
 
-                    <div class="mb-4">
-                        <label for="lname" class="block text-sm font-medium text-gray-600">Last Name</label>
-                        <input type="text" id="lname" name="lname" th:value="${userData.lname}" readonly
-                            class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
-                    </div>
-                </div>
+					<div class="mb-4">
+						<label for="lname" class="block text-sm font-medium text-gray-600">Last
+							Name</label> <input type="text" id="lname" name="lname"
+							th:value="${userData.lname}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+				</div>
 
-                <!-- Second Row: Phone Number, Position, Birthday -->
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="mb-4">
-                        <label for="phoneNumber" class="block text-sm font-medium text-gray-600">Phone Number</label>
-                        <input type="tel" id="phoneNumber" name="phoneNumber" th:value="${userData.phoneNumber}" readonly
-                            class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
-                    </div>
+				<!-- Second Row: Phone Number, Position, Birthday -->
+				<div class="grid grid-cols-3 gap-4">
+					<div class="mb-4">
+						<label for="phoneNumber"
+							class="block text-sm font-medium text-gray-600">Phone
+							Number</label> <input type="tel" id="phoneNumber" name="phoneNumber"
+							th:value="${userData.phoneNumber}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
 
-                    <div class="mb-4">
-                        <label for="position" class="block text-sm font-medium text-gray-600">Position</label>
-                        <input type="text" id="position" name="position" th:value="${userData.position}" readonly
-                            class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
-                    </div>
+					<div class="mb-4">
+						<label for="position"
+							class="block text-sm font-medium text-gray-600">Position</label>
+						<input type="text" id="position" name="position"
+							th:value="${userData.position}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
 
-                    <div class="mb-4">
-                        <label for="birthdate" class="block text-sm font-medium text-gray-600">Birthday</label>
-                        <input type="date" id="birthdate" name="birthdate" value="1990-01-01" readonly
-                            class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
-                    </div>
-                </div>
+					<div class="mb-4">
+						<label for="birthdate"
+							class="block text-sm font-medium text-gray-600">Birthday</label>
+						<input type="date" id="birthdate" name="birthdate"
+							th:value="${userData.birthdate}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+				</div>
 
-                <!-- Third Row: Employment Status, Email -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="mb-4">
-                        <label for="status" class="block text-sm font-medium text-gray-600">Employment Status</label>
-                        <input type="text" id="status" name="status" th:value="${userData.employementStatus}" readonly
-                            class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
-                    </div>
+				<!-- Third Row: Employment Status, Email -->
+				<div class="grid grid-cols-2 gap-4">
+					<div class="mb-4">
+						<label for="status"
+							class="block text-sm font-medium text-gray-600">Employment
+							Status</label> <input type="text" id="status" name="status"
+							th:value="${userData.employementStatus}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
 
-                    <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
-                        <input type="email" id="email" name="email" th:value="${userData.email}" readonly
-                            class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
-                    </div>
-                </div>
+					<div class="mb-4">
+						<label for="email" class="block text-sm font-medium text-gray-600">Email</label>
+						<input type="email" id="email" name="email"
+							th:value="${userData.email}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+				</div>
 
-                <!-- Fourth Row: Address -->
-                <div class="mb-4">
-                    <label for="address" class="block text-sm font-medium text-gray-600">Address</label>
-                    <input type="text" id="address" name="address" th:value="${userData.Address}" readonly
-                        class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
-                </div>
+				<!-- Fourth Row: Address -->
+				<div class="mb-4">
+					<label for="address"
+						class="block text-sm font-medium text-gray-600">Address</label> <input
+						type="text" id="address" name="address"
+						th:value="${userData.Address}" readonly
+						class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+				</div>
 
-                <!-- Fifth Row: Position -->
-                <div class="mt-4">
-                    <label for="role" class="block text-sm font-medium text-gray-600">Role</label>
-                    <input type="text" id="role" name="role" th:value="${userData.role.toString}" readonly
-                        class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
-                </div>
-
-                <!-- Buttons -->
-                <div class="flex items-center">
-                    <a th:href="@{/users}"
-                        class="rounded bg-blue-500 p-2 text-white focus:border-blue-300 focus:outline-none focus:ring"
-                        style="background-color: blue; border-color: blue">Back</a>
-                </div>
-            </form>
-        </div>
-    </div>
+				<!-- Fifth Row: Position -->
+				<div class="grid grid-cols-3 gap-4">
+					<div class="mb-4">
+						<label for="role" class="block text-sm font-medium text-gray-600">Role</label>
+						<input type="text" id="role" name="role"
+							th:value="${userData.role.toString}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+					<div class="mb-4">
+						<label for="employementDate"
+							class="block text-sm font-medium text-gray-600">Employement
+							Date</label> <input type="date" id="employementDate"
+							name="employementDate" th:value="${userData.employementDate}"
+							readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+					<div class="mb-4">
+						<label for="terminationDate"
+							class="block text-sm font-medium text-gray-600">Termination
+							Date</label> <input type="date" id="terminationDate"
+							name="terminationDate" th:value="${userData.terminationDate}"
+							readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+				</div>
+		<!-- Buttons -->
+		<div class="flex items-center">
+			<a th:href="@{/users}"
+				class="rounded bg-blue-500 p-2 text-white focus:border-blue-300 focus:outline-none focus:ring"
+				style="background-color: blue; border-color: blue">Back</a>
+		</div>
+		</form>
+	</div>
+	</div>
 </body>
 </html>

@@ -121,6 +121,7 @@ public class StaffServiceImpl implements StaffService{
 			existingUser.setBirthdate(userData.getBirthdate());
 			existingUser.setPhoneNumber(userData.getPhoneNumber());
 			existingUser.setPosition(userData.getPosition());
+			existingUser.setTerminationDate(userData.getTerminationDate());
 			Role role = roleRepository.findByName(userData.getRole().getName());
 			existingUser.setRole(role);
 			System.out.println(role);

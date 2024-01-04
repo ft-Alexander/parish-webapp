@@ -4,21 +4,27 @@
 	<meta charset="UTF-8">
     <title>Parish Information Management System</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
-<body>
-<nav class="bg-green-600">
-        <div class="container mx-auto flex items-center justify-between p-4">
-            <a class="text-white text-lg font-bold" th:href="@{/dashboard}" >Welcome <span th:text="${user}"></span></a>
-            
-            <div class="lg:flex lg:items-center lg:w-auto">
-                <ul class="flex list-none space-x-4">
-                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/users/finance}">Finance</a></li>
-                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/users}">Staff</a></li>
-                    <li class="nav-item"><a class="text-white hover:text-gray-300 px-3 py-2" th:href="@{/logout}">Logout</a></li>
-                </ul>
-            </div>
+<body class="font-sans bg-gray-100">
+<nav class="bg-gradient-to-r from-green-500 to-green-700 text-white shadow-md">
+      <div class="container mx-auto flex flex-col items-center justify-between p-4 lg:flex-row">
+        <a class="mb-4 flex items-center rounded px-3 py-2 text-lg transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800 lg:mb-0" th:href="@{/dashboard}">
+          <i class="material-icons mr-2 text-2xl">account_circle</i>
+          <span class="text-white-500 text-lg font-light italic">WELCOME!&nbsp;</span>
+          <span class="text-gray font-semibold" th:text="${user}"></span>
+        </a>
+
+        <div class="lg:flex lg:w-auto lg:items-center">
+          <ul class="flex list-none space-x-4">
+            <li class="nav-item"><a class="rounded px-3 py-2 transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800" th:href="@{/finance}">Finance</a></li>
+            <li class="nav-item"><a class="rounded px-3 py-2 transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800" th:href="@{/users}">Staff</a></li>
+            <li class="nav-item"><a class="rounded px-3 py-2 transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800" th:href="@{/logout}">Logout</a></li>
+          </ul>
         </div>
+      </div>
     </nav>
+    
 <div>
     <div>
         <h2>Financial Records</h2>

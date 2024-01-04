@@ -23,11 +23,14 @@ public class FinanceController {
 	private FinanceService financeService;
 	private StaffService staffService;
 	
-	public FinanceController(FinanceService financeService) {
+	
+public FinanceController(FinanceService financeService, StaffService staffService) {
 		super();
 		this.financeService = financeService;
+		this.staffService = staffService;
 	}
-//	handler method to handle finance form
+
+	//	handler method to handle finance form
     @GetMapping("/finance")
     public String finance(Model model, HttpServletRequest request) {
     	List<FinanceDto> financeDto = financeService.findAllRecords();
@@ -51,21 +54,21 @@ public class FinanceController {
 	}
 
 //	handle method to handle new financial record submit request
-	@PostMapping("users/finance/add-financial-record")
+	@PostMapping("/finance/add-financial-record")
 	public String addFinancialRecord(@ModelAttribute("fRecord") FinanceDto financeRecord, Model model) {
 		financeService.addFinancialRecord(financeRecord);
 		return "redirect:/users/finance";
 	}
 	
 //	handler method to handle financial record update request
-	@GetMapping("/users/finance/edit-financial-record/{id}")
+	@GetMapping("/finance/edit-financial-record/{id}")
 	public String editFinancialRecordForm(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("userData", financeService.findFinancialRecordById(id));
 		return "edit-financial-record";
 	}
 	
 //	handler method to handle financial record update submit request
-	@PostMapping("/users/finance/edit-financial-record/{id}")
+	@PostMapping("/finance/edit-financial-record/{id}")
 	public String editFinancialRecord(@PathVariable("id") Long id, @ModelAttribute("userData") Finance userData,
 			BindingResult result, Model model) {
 		Finance existingRecord = financeService.findFinancialRecordById(id);
@@ -81,7 +84,7 @@ public class FinanceController {
 	}
 	
 //	handler method to handle deletion of registered data
-    @GetMapping("/users/finance/{id}")
+    @GetMapping("/finance/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
     	financeService.deleteFinancialRecordById(id);
     	return "redirect:/users";

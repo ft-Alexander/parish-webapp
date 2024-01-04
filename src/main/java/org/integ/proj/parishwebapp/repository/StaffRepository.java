@@ -10,4 +10,5 @@ public interface StaffRepository extends JpaRepository<Staff, Long> {
     
     @Query("SELECT s FROM Staff s WHERE s.fname LIKE %?1% OR s.mname LIKE %?1% OR s.lname LIKE %?1% OR s.email LIKE %?1% OR s.employementDate LIKE %?1%")
     List<Staff> search(String keyword);
+    
 }

@@ -48,9 +48,11 @@ public class SpringSecurity {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/", "/register/**", "/css/**").permitAll()
 				.requestMatchers("/login", "/register").permitAll()
-				.requestMatchers("/dashboard").hasAnyRole("ADMIN","USER","FINANCE")
-				.requestMatchers("users/finance","users/finance/**").hasAnyRole("FINANCE","ADMIN")
-				.requestMatchers("/users","/users/**").hasRole("ADMIN"))
+				.requestMatchers("/dashboard","/users").hasAnyRole("ADMIN","USER","FINANCE","EXECASS")
+				.requestMatchers("/users/view/**","/users/search/**","/users/ascFirstName/**").hasAnyRole("FINANCE","EXECASS","ADMIN")
+				.requestMatchers("/users/**").hasAnyRole("EXECASS","ADMIN")
+				.requestMatchers("/finance","/finance/**").hasAnyRole("FINANCE","ADMIN"))
+				
 				
 				
 				.formLogin(form -> 

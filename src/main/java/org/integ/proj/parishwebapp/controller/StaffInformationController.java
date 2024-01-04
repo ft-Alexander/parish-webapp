@@ -36,17 +36,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-public class StaffInformationController {
-	@Autowired
-	private ResourceLoader resourceLoader;
-	
+public class StaffInformationController {	
 	private StaffService staffService;
-	private RoleRepository roleRepository;
 
-	public StaffInformationController(StaffService staffService, RoleRepository roleRepository) {
+
+	public StaffInformationController(StaffService staffService) {
 		super();
 		this.staffService = staffService;
-		this.roleRepository = roleRepository;
 	}
 
 	@GetMapping("/users")

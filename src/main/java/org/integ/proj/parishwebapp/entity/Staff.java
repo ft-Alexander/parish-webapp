@@ -49,6 +49,9 @@ public class Staff {
     
     @Column
     private LocalDate birthdate;
+    
+    @Column
+    private LocalDate terminationDate;
 
     
     @Column

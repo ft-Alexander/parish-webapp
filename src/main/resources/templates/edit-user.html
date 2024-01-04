@@ -122,7 +122,8 @@
 				</div>
 
 				<!-- Fifth Row: Position -->
-				<div class="mt-4">
+				<div class="grid grid-cols-3 gap-4">
+				<div class="mb-4">
 					<label for="role" class="block text-sm font-medium text-gray-600">Role</label>
 					<select th:field="*{role}" name="role" id="role"
 						class="mt-1 w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring"
@@ -132,6 +133,27 @@
 						<option value=3 class="text-gray-800">Finance</option>
 						<option value=4 class="text-gray-800">Executive Assistant</option>
 					</select>
+				</div>
+				<div class="mb-4">
+						<label for="employementDate"
+							class="block text-sm font-medium text-gray-600">Employement Date</label>
+						<input type="date" id="employementDate" name="employementDate"
+							th:value="*{employementDate}" required
+							class="w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
+						<p th:errors="*{employementDate}"
+							th:if="${#fields.hasErrors('employementDate')}"
+							class="mt-1 text-sm text-red-500"></p>
+					</div>
+				<div class="mb-4">
+						<label for="terminationDate"
+							class="block text-sm font-medium text-gray-600">Termination Date</label>
+						<input type="date" id="terminationDate" name="terminationDate"
+							th:value="*{terminationDate}" 
+							class="w-full rounded border p-2 focus:border-blue-300 focus:outline-none focus:ring" />
+						<p th:errors="*{terminationDate}"
+							th:if="${#fields.hasErrors('terminationDate')}"
+							class="mt-1 text-sm text-red-500"></p>
+					</div>
 				</div>
 				<!-- Buttons -->
 				<div class="flex items-center">
