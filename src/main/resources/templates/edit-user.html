@@ -16,7 +16,13 @@
 			<form method="post" role="form" th:object="${userData}"
 				enctype="multipart/form-data"
 				th:action="@{/users/edit/{id}(id=${userData.id})}" class="space-y-4">
-
+				<div class="mb-4">
+					<label for="address"
+						class="block text-sm font-medium text-gray-600">Being Edited By</label> <input
+						type="text" id="address" name="address"
+						th:value="${EditedBy.id + ' - ' + EditedBy.fname +' ' + EditedBy.lname}" readonly
+						class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+				</div>
 				<!-- First Row: First Name, Middle Name, Last Name -->
 				<div class="grid grid-cols-3 gap-4">
 					<div class="mb-4">
@@ -156,7 +162,7 @@
 					</div>
 				</div>
 				<!-- Buttons -->
-				<div class="flex items-center">
+				<div class="flex items-center justify-end">
 					<button type="submit"
 						class="rounded bg-green-600 p-2 text-white focus:border-blue-300 focus:outline-none focus:ring">Submit
 						Changes</button>

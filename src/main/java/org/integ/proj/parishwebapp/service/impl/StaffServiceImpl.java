@@ -92,6 +92,7 @@ public class StaffServiceImpl implements StaffService{
 	        staffDto.setLname(user.getLname());
 	        staffDto.setEmail(user.getEmail());
 	        staffDto.setEmployementDate(user.getEmployementDate());
+	        staffDto.setPhoneNumber(user.getPhoneNumber());
 	        return staffDto;
 	    }
 
@@ -110,7 +111,7 @@ public class StaffServiceImpl implements StaffService{
 		}
 
 		@Override
-		public void editUser(Staff userData, Long id) {
+		public void editUser(Staff userData, Long id, Long Editor) {
 			Staff existingUser = findUserById(id);
 			existingUser.setFname(userData.getFname());
 			existingUser.setMname(userData.getMname());
@@ -122,6 +123,7 @@ public class StaffServiceImpl implements StaffService{
 			existingUser.setPhoneNumber(userData.getPhoneNumber());
 			existingUser.setPosition(userData.getPosition());
 			existingUser.setTerminationDate(userData.getTerminationDate());
+			existingUser.setEditedBy(Editor);
 			Role role = roleRepository.findByName(userData.getRole().getName());
 			existingUser.setRole(role);
 			System.out.println(role);

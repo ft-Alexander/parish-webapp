@@ -8,14 +8,15 @@
 	rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet" />
-<link rel="stylesheet"
+	<link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.0.9/dist/css/splide.min.css">
-<title>St. John The Baptist</title>
+<title>St. John The Baptist Budget Tracker</title>
 </head>
 
 <body class="bg-gray-100 font-sans">
+	<!-- Navigation Bar -->
 	<nav
-		class="bg-gradient-to-r from-green-500 to-green-700 text-white shadow-md">
+		class="bg-gradient-to-r from-green-500 to-green-900 text-white shadow-md">
 		<div
 			class="container mx-auto flex flex-col items-center justify-between p-4 lg:flex-row">
 			<a
@@ -40,55 +41,6 @@
 			</div>
 		</div>
 	</nav>
-
-	<div
-		class="container mx-auto mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
-		<!-- Box 1 -->
-		<div class="flex justify-center rounded bg-gray-200 p-4">
-			<i class="material-icons mb-2 mr-2 text-2xl text-blue-500">person</i>
-			<div>
-				<h2 class="mb-2 text-xl font-light italic text-gray-700">Number
-					of Staff:&nbsp;</h2>
-			</div>
-			<span class="text-xl font-semibold text-blue-500"
-				th:text="${staffCount}"></span>
-		</div>
-
-		<!-- Box 2 -->
-		<div class="flex justify-center rounded bg-gray-200 p-4">
-			<i class="material-icons mb-2 mr-2 text-2xl text-green-500">attach_money</i>
-			<div>
-				<h2 class="mb-2 text-xl font-light italic text-gray-700">Finance
-					Entries:&nbsp;</h2>
-			</div>
-			<span class="text-xl font-semibold text-green-500"
-				th:text="${staffCount}"></span>
-		</div>
-
-		<!-- Box 3 -->
-		<div class="flex justify-center rounded bg-gray-200 p-4">
-			<i class="material-icons mb-2 mr-2 text-2xl text-red-500">today</i>
-			<div>
-				<h2 class="mb-2 text-xl font-light italic text-gray-700">No. of
-					Schedules Today:&nbsp;</h2>
-			</div>
-			<span class="text-xl font-semibold text-red-500"
-				th:text="${staffCount}"></span>
-		</div>
-
-		<!-- Box 4 -->
-		<div class="flex justify-center rounded bg-gray-200 p-4">
-			<i class="material-icons mb-2 mr-2 text-2xl text-indigo-500">description</i>
-			<div>
-				<h2 class="mb-2 text-xl font-light italic text-gray-700">Documents
-					Stored:&nbsp;</h2>
-			</div>
-			<span class="text-xl font-semibold text-indigo-500"
-				th:text="${staffCount}"></span>
-		</div>
-	</div>
-	<br/><br/>
-	
 	<div class="container mx-auto mt-4 lg:flex items-center">
 		<!-- Carousel Section (Left) -->
 		<div class="lg:w-1/2">
@@ -112,69 +64,182 @@
 		<div class="lg:w-1/2 mt-4 lg:mt-0">
 			<div class="flex justify-center rounded p-4">
 				<div>
-					<p class="text-gray-700 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-						felis sapien, accumsan et maximus id, ultrices quis felis. Nam
-						felis mauris, mollis nec neque id, aliquet tincidunt odio. Fusce
-						ornare urna ac tempor facilisis. Quisque ultrices commodo urna ac
-						condimentum. In sagittis lorem nec ex venenatis porttitor eget
-						mattis velit. Curabitur ac tortor pulvinar, accumsan urna a,
-						porttitor ligula. Nullam volutpat lacus at consectetur commodo.
-						Fusce ultrices tortor eu libero tristique, ut vestibulum lectus
-						luctus. Quisque vel posuere leo. Suspendisse auctor leo suscipit
-						felis lacinia, non rutrum orci pellentesque. Nam posuere purus
-						tellus. Phasellus scelerisque, lacus quis viverra fermentum, ante
-						lectus mollis quam, in elementum nulla lectus at est.</p>
+					<div class="container mx-auto px-4">
+		<h1 class="mb-4 text-center text-9xl font-bold text-green-800">Hello!</h1>
+		<p class="text-center text-lg text-green-900">Welcome to St. John
+			The Baptist Budget Tracker</p>
+	</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="bg-gray-100 p-6 rounded-lg mt-8">
-    <h4 class="text-3xl text-center font-bold text-green-600 mb-6">INFORMATIONS</h4>
-    <p class="text-gray-700 leading-relaxed">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices magna non sapien fermentum
-        rhoncus. Nulla feugiat ipsum sit amet ligula posuere, at venenatis eros fermentum. Etiam finibus
-        suscipit dui, non congue metus rhoncus ut. Cras vitae erat nec risus molestie luctus. Praesent maximus
-        auctor laoreet. Curabitur at nulla sit amet nunc pulvinar consequat ut sit amet mi. Etiam vestibulum,
-        diam vel maximus tristique, ligula quam luctus augue, sed maximus nibh mi non enim. Aliquam at
-        elementum nunc, a facilisis justo. Aenean vel mattis nulla, id scelerisque enim. Donec fermentum
-        commodo quam a condimentum. Sed ultricies lacus ac porttitor ultrices. Phasellus nec porta sem. Sed
-        odio tortor, rhoncus vel aliquet sit amet, dapibus vitae metus. Vestibulum maximus purus eget ipsum
-        accumsan varius. Vestibulum ut risus vel odio pellentesque interdum. Pellentesque eu efficitur purus,
-        eleifend tincidunt ante. Vestibulum efficitur tellus a diam sagittis, ac elementum lacus tincidunt.
-        Praesent hendrerit consequat eros, vitae maximus nulla placerat vel. Nulla fermentum ut odio nec
-        tincidunt. Suspendisse imperdiet tortor ac ipsum ornare convallis. Aenean tincidunt consequat vulputate.
-        Nunc ac malesuada tellus. Phasellus quis mattis metus. Pellentesque venenatis nunc vitae nunc
-        suscipit, ac dapibus mauris tincidunt. Suspendisse nec tincidunt dolor. Sed malesuada eros eget velit
-        placerat, at scelerisque lorem varius. Quisque a mollis elit. Cras nec justo facilisis, sodales leo
-        vel, feugiat diam. Sed vestibulum quis lacus id venenatis. Vestibulum ante ipsum primis in faucibus
-        orci luctus et ultrices posuere cubilia curae; Curabitur elit libero, porta nec elit at, scelerisque
-        tempus nisi. Nulla euismod pellentesque magna a convallis. Class aptent taciti sociosqu ad litora
-        torquent per conubia nostra, per inceptos himenaeos. Interdum et malesuada fames ac ante ipsum primis
-        in faucibus. Curabitur et aliquet purus, id condimentum magna. Nam feugiat sem eu dignissim elementum.
-        Duis tincidunt dictum leo. Cras quis libero sapien. Nulla semper nec justo ut condimentum. Cras ut
-        pharetra elit. Praesent a tristique tellus, sit amet commodo justo. Curabitur vitae felis magna. Morbi
-        quis libero at orci fermentum sodales. Nunc vel sapien justo. Phasellus vel vulputate urna.
-    </p>
-</div>
+	</div><br><br>
 	
 
-	<!-- Splide JS (Include at the end of the body) -->
+	<div
+		class="container mx-auto mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+		<!-- Box 1 -->
+		<div class="flex justify-center rounded bg-gray-200 p-4">
+			<i class="material-icons mb-2 mr-2 text-2xl text-blue-500">person</i>
+			<div>
+				<h2 class="mb-2 font-serif text-xl italic text-gray-700">Number
+					of Staff:&nbsp;</h2>
+			</div>
+			<span class="text-xl font-semibold text-blue-500" th:text="${staffCount}"></span>
+		</div>
+
+		<!-- Box 2 -->
+		<div class="flex justify-center rounded bg-gray-200 p-4">
+			<i class="material-icons mb-2 mr-2 text-2xl text-red-500">today</i>
+			<div>
+				<h2 class="mb-2 font-serif text-xl italic text-gray-700">Invoice
+					Entries:&nbsp;</h2>
+			</div>
+			<span class="text-xl font-semibold text-green-500"></span>
+		</div>
+
+		<!-- Box 3 -->
+		<div class="flex justify-center rounded bg-gray-200 p-4">
+			<i class="material-icons mb-2 mr-2 text-2xl text-green-500">attach_money</i>
+			<div>
+				<h2 class="mb-2 font-serif text-xl italic text-gray-700">Budget
+					Left:&nbsp;Php</h2>
+			</div>
+			<span class="text-xl font-semibold text-green-500"></span>
+		</div>
+
+		<!-- Box 4 -->
+		<div class="flex justify-center rounded bg-gray-200 p-4">
+			<i class="material-icons mb-2 mr-2 text-2xl text-indigo-500">schedule</i>
+			<div>
+				<h2 class="mb-2 font-serif text-xl italic text-gray-700">Current
+					Date:&nbsp;</h2>
+			</div>
+			<span id="currentDate" class="text-xl font-semibold text-indigo-500"></span>
+		</div>
+	</div>
+	<br />
+	<br />
+	<div class="flex justify-center rounded p-4">
+		<div>
+			<p class="font-serif text-lg italic leading-relaxed text-gray-700">Welcome
+				to the Church Budget Tracker dashboard. Here, you can monitor and
+				manage your financial information. Keep track of donations,
+				expenses, and overall budget status. Utilize the tools and features
+				to ensure transparent and responsible financial stewardship within
+				the church community.</p>
+		</div>
+	</div>
+	<br />
+	<br />
+
+	<h4 class="mb-6 text-center text-3xl font-bold text-green-500">
+		<i class="material-icons mr-2 text-4xl">feedback</i> Feedbacks
+	</h4>
+	<div
+		class="mx-20 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+		<!-- Feedback Card 1 -->
+		<div class="rounded-lg bg-white p-4 shadow-lg sm:p-6">
+			<p
+				class="mb-2 text-base font-semibold text-gray-800 sm:text-lg md:text-lg lg:text-lg xl:text-lg">"Amazing
+				service! I highly recommend it."</p>
+			<p
+				class="text-sm text-gray-600 sm:text-base md:text-base lg:text-base xl:text-base">-
+				John Doe</p>
+		</div>
+
+		<!-- Feedback Card 2 -->
+		<div class="rounded-lg bg-white p-4 shadow-lg sm:p-6">
+			<p
+				class="mb-2 text-base font-semibold text-gray-800 sm:text-lg md:text-lg lg:text-lg xl:text-lg">"The
+				quality of their products is outstanding."</p>
+			<p
+				class="text-sm text-gray-600 sm:text-base md:text-base lg:text-base xl:text-base">-
+				Jane Smith</p>
+		</div>
+
+		<!-- Feedback Card 3 -->
+		<div class="rounded-lg bg-white p-4 shadow-lg sm:p-6">
+			<p
+				class="mb-2 text-base font-semibold text-gray-800 sm:text-lg md:text-lg lg:text-lg xl:text-lg">"Fast
+				and efficient! Will definitely use again."</p>
+			<p
+				class="text-sm text-gray-600 sm:text-base md:text-base lg:text-base xl:text-base">-
+				Bob Johnson</p>
+		</div>
+
+		<!-- Feedback Card 4 -->
+		<div class="rounded-lg bg-white p-4 shadow-lg sm:p-6">
+			<p
+				class="mb-2 text-base font-semibold text-gray-800 sm:text-lg md:text-lg lg:text-lg xl:text-lg">"Excellent
+				customer support and communication."</p>
+			<p
+				class="text-sm text-gray-600 sm:text-base md:text-base lg:text-base xl:text-base">-
+				Alice Williams</p>
+		</div>
+	</div>
+
+	<!-- Useful Information Section (Right) -->
+
+	<div class="mt-4 flex justify-center">
+		<!-- Contact Information -->
+		<div class="rounded-lg bg-gray-100 p-6 lg:w-1/2">
+			<h4 class="mb-6 text-center text-3xl font-bold text-green-500">
+				<i class="material-icons mr-2 text-4xl">link</i> Stay Connected
+			</h4>
+
+			<p class="leading-relaxed text-gray-700">Stay connected with the
+				latest updates and important announcements from the church
+				community. Discover upcoming events, volunteer opportunities, and
+				ways to actively participate in the church's various ministries.
+				Engage with fellow members and strengthen your sense of community by
+				being well-informed and involved.</p>
+
+			<!-- Location -->
+			<div class="mt-4 flex items-center">
+				<i class="material-icons mr-2 text-2xl text-green-500">location_on</i>
+				<span class="text-gray-700">123 Church Street, Cityville</span>
+			</div>
+
+			<!-- Phone Number -->
+			<div class="mt-2 flex items-center">
+				<i class="material-icons mr-2 text-2xl text-green-500">phone</i> <span
+					class="text-gray-700">(555) 123-4567</span>
+			</div>
+
+			<!-- Working Hours -->
+			<div class="mt-2 flex items-center">
+				<i class="material-icons mr-2 text-2xl text-green-500">access_time</i>
+				<span class="text-gray-700">Mon-Fri, 9 AM - 5 PM</span>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<footer class="bg-gray-800 text-white p-4 text-center">
+		<p>&copy; 2024 Your Company Name. All rights reserved.</p>
+	</footer>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.0.9/dist/js/splide.min.js"></script>
 	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			new Splide('#image-carousel', {
-				type : 'fade',
-				heightRatio : 0.5,
-				pagination : false,
-				arrows : false,
-				rewind : true,
-				autoplay : true, // Enable automatic sliding
-				interval : 4000,
-			}).mount();
-		});
-	</script>
+	document.addEventListener('DOMContentLoaded', function() {
+		new Splide('#image-carousel', {
+			type : 'fade',
+			heightRatio : 0.5,
+			pagination : false,
+			arrows : false,
+			rewind : true,
+			autoplay : true, // Enable automatic sliding
+			interval : 4000,
+		}).mount();
+	});
+		// Get the current date
+		const currentDate = new Date();
 
+		// Format the date as needed (e.g., "YYYY-MM-DD")
+		const formattedDate = currentDate.toISOString().split("T")[0];
+
+		// Insert the formatted date into the span element
+		document.getElementById("currentDate").textContent = formattedDate;
+	</script>
 </body>
 </html>

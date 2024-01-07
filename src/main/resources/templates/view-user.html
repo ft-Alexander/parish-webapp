@@ -15,6 +15,16 @@
 			<h2 class="mb-4 text-center text-2xl font-bold">View User</h2>
 			<form class="space-y-4">
 				<!-- First Row: First Name, Middle Name, Last Name -->
+				<div class="grid grid-cols-2">
+				<div class="mb-4">
+					<label for="address"
+						class="block text-sm font-medium text-gray-600">Last Update By:</label> <input
+						type="text" id="address" name="address"
+						th:value="${' '+ userData.EditedBy + ' - ' + EditedBy.fname + ' ' + EditedBy.lname}" readonly
+						class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+				</div>
+				</div>
+				
 				<div class="grid grid-cols-3 gap-4">
 					<div class="mb-4">
 						<label for="fname" class="block text-sm font-medium text-gray-600">First
@@ -118,7 +128,7 @@
 					</div>
 				</div>
 		<!-- Buttons -->
-		<div class="flex items-center">
+		<div class="flex items-center justify-end">
 			<a th:href="@{/users}"
 				class="rounded bg-blue-500 p-2 text-white focus:border-blue-300 focus:outline-none focus:ring"
 				style="background-color: blue; border-color: blue">Back</a>

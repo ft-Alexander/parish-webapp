@@ -31,4 +31,6 @@ public class StaffDto {
 	    @NotNull
 	    private LocalDate employementDate;
 	    
+	    private String phoneNumber;
+	    
 }

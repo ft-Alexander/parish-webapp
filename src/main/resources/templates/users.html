@@ -13,7 +13,7 @@
 
 <body class="font-sans bg-gray-100">
 
-	<nav class="bg-gradient-to-r from-green-500 to-green-700 text-white shadow-md">
+	<nav class="bg-gradient-to-r from-green-500 to-green-900 text-white shadow-md">
       <div class="container mx-auto flex flex-col items-center justify-between p-4 lg:flex-row">
         <a class="mb-4 flex items-center rounded px-3 py-2 text-lg transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800 lg:mb-0" th:href="@{/dashboard}">
           <i class="material-icons mr-2 text-2xl">account_circle</i>
@@ -63,18 +63,12 @@
 						<th
 							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">ID</th>
 						<th
-							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">First
-							Name</th>
-						<th
-							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Middle
-							Name</th>
-						<th
-							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Last
+							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">
 							Name</th>
 						<th
 							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Email</th>
 						<th
-							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Employment
+							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Phone Number
 							Date</th>
 						<th
 							class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Actions</th>
@@ -83,10 +77,9 @@
 				<tbody>
 					<tr th:each="staff : ${staffDto}" class="hover:bg-gray-100">
 						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.id}"></td>
-						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.fname}"></td>
-						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.mname}"></td>
-						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.lname}"></td>
+						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.fname + ' ' + staff.mname + ' ' + staff.lname}"></td>
 						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.email}"></td>
+						<td class="py-2 lg:py-4 px-6 border-b" th:text="${staff.phoneNumber}"></td>
 						<td class="py-2 lg:py-4 px-6 border-b"
 							th:text="${staff.employementDate}"></td>
 						<td class="py-2 lg:py-4 px-6 border-b"><a

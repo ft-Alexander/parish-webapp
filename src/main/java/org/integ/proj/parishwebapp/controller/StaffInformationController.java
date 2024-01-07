@@ -89,7 +89,12 @@ public class StaffInformationController {
 
 	// handler method to handle user information update request
 	@GetMapping("/users/edit/{id}")
-	public String editUserForm(@PathVariable("id") Long id, Model model) {
+	public String editUserForm(@PathVariable("id") Long id, Model model, HttpServletRequest request) {
+		Principal principal = request.getUserPrincipal();
+		Staff staff = new Staff();
+		staff = staffService.findUserByEmail(principal.getName());
+
+		model.addAttribute("EditedBy", staff);
 		model.addAttribute("userData", staffService.findUserById(id));
 		return "edit-user";
 	}
@@ -97,7 +102,7 @@ public class StaffInformationController {
 //	handler method to handle user information update submit request
 	@PostMapping("/users/edit/{id}")
 	public String editUser(@PathVariable("id") Long id, @ModelAttribute("userData") Staff userData,
-			BindingResult result, Model model) {
+			BindingResult result, Model model,HttpServletRequest request) {
 //		Staff existingUser = staffService.findUserById(id);
 //		existingUser.setFname(userData.getFname());
 //		existingUser.setMname(userData.getMname());
@@ -114,7 +119,12 @@ public class StaffInformationController {
 //		System.out.println(userData.getRole().getName());
 //		
 //		staffService.editUser(existingUser);
-		staffService.editUser(userData, id);
+		Principal principal = request.getUserPrincipal();
+		Staff staff = new Staff();
+		staff = staffService.findUserByEmail(principal.getName());
+
+		model.addAttribute("EditedBy", staff.getId());
+		staffService.editUser(userData, id, staff.getId());
 		return "redirect:/users";
 		
 	}
@@ -135,7 +145,12 @@ public class StaffInformationController {
 	}
 	@GetMapping("/users/view/{id}")
 	public String viewUserForm(@PathVariable("id") Long id, Model model) {
+		
+		
 		model.addAttribute("userData", staffService.findUserById(id));
+		Staff staff = new Staff();
+		staff = staffService.findUserById(staffService.findUserById(id).getEditedBy());
+		model.addAttribute("EditedBy", staff);
 		return "view-user";
 	}
 

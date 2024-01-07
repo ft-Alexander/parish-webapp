@@ -63,6 +63,9 @@ public class Staff {
     @Column
     private String position;
     
+    @Column
+    private Long EditedBy;
+    
     
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")

@@ -22,5 +22,6 @@ public interface StaffService {
 	 
 	 List<Staff> search(String keyword);
 	 
-	 void editUser(Staff staff, Long id);
+	 void editUser(Staff staff, Long id, Long editor);
+	 
 }
