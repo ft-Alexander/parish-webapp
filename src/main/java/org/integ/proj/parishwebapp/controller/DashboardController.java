@@ -1,50 +1,44 @@
 package org.integ.proj.parishwebapp.controller;
 
-import org.integ.proj.parishwebapp.entity.Staff;
-import org.integ.proj.parishwebapp.service.StaffService;
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
+import jakarta.servlet.http.HttpServletRequest;
+import org.integ.proj.parishwebapp.entity.Staff;
+import org.integ.proj.parishwebapp.service.StaffService;
+import org.integ.proj.parishwebapp.service.DashboardService;
 
 @Controller
 public class DashboardController {
-	private StaffService staffService;
 	
-	public DashboardController(StaffService staffService) {
-		super();
-		this.staffService = staffService;
-	}
-    
-// 	handler method to handle user information update request
-    @GetMapping("/users/edit/{id}")
-    public String editUserForm(@PathVariable("id") Long id, Model model) {
-    	model.addAttribute("userData", staffService.findUserById(id));
-    	return "edit-user";
-    }
-    
-//	handler method to handle user information update submit request
-    @PostMapping("/users/edit/{id}")
-    public String editUser(@PathVariable("id") Long id, @ModelAttribute("userData") Staff userData,
-    		BindingResult result, Model model) {
-    	Staff existingUser = staffService.findUserById(id);
-    	existingUser.setFname(userData.getFname());
-    	existingUser.setMname(userData.getMname());
-    	existingUser.setLname(userData.getLname());
-    	existingUser.setEmail(userData.getEmail());
-    	existingUser.setEmployementDate(userData.getEmployementDate());
-    	
-    	staffService.editUser(existingUser);
-    	return "redirect:/users";
-    }
+private DashboardService DashboardService;
+private StaffService staffService;
+	
+	
+	public DashboardController(org.integ.proj.parishwebapp.service.DashboardService dashboardService,
+		StaffService staffService) {
+	super();
+	DashboardService = dashboardService;
+	this.staffService = staffService;
+}
 
-//	handler method to handle deletion of registered data
-    @GetMapping("/users/{id}")
-    public String deleteUser(@PathVariable("id") Long id) {
-    	staffService.deleteUserById(id);
-    	return "redirect:/users";
-    }
+	@GetMapping("/dashboard")
+	public String showdashboard (Model model,HttpServletRequest request) {
+		Principal principal = request.getUserPrincipal();
+		Staff staff = new Staff();
+		staff = staffService.findUserByEmail(principal.getName());
+		
+		model.addAttribute("user",staff.getFname());
+		System.out.println(staff.getFname());
+		
+		int staffCount = DashboardService.getStaffCount(); // Implement this method in your service
+	    model.addAttribute("staffCount", staffCount);
+	    
+		return "dashboard";
+	}
+	
+	
 }

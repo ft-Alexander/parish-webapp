@@ -46,11 +46,26 @@ public class Staff {
 
     @Column(nullable=false)
     private String password;
+    
+    @Column
+    private LocalDate birthdate;
+    
+    @Column
+    private LocalDate terminationDate;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name="users_roles",
-            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
-            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
-    private List<Role> roles = new ArrayList<>();
+    
+    @Column
+    private String phoneNumber;
+    
+    @Column
+    private String address;
+    
+    @Column
+    private String position;
+    
+    
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")
+    private Role role;
+    
 }

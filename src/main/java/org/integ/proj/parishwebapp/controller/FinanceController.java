@@ -1,20 +1,23 @@
 package org.integ.proj.parishwebapp.controller;
 
-<<<<<<< Updated upstream
-=======
+
 import java.math.BigDecimal;
 import java.security.Principal;
->>>>>>> Stashed changes
+
+import java.security.Principal;
+
 import java.util.List;
 
 import org.integ.proj.parishwebapp.entity.Finance;
+import org.integ.proj.parishwebapp.entity.Staff;
 import org.integ.proj.parishwebapp.dto.FinanceDto;
 import org.integ.proj.parishwebapp.service.FinanceService;
-<<<<<<< Updated upstream
-=======
+
 import org.integ.proj.parishwebapp.service.StaffService;
 import org.springframework.data.repository.query.Param;
->>>>>>> Stashed changes
+
+import org.integ.proj.parishwebapp.service.StaffService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,27 +27,39 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 public class FinanceController {
 	private FinanceService financeService;
+	private StaffService staffService;
 	
-	public FinanceController(FinanceService financeService) {
+	
+public FinanceController(FinanceService financeService, StaffService staffService) {
 		super();
 		this.financeService = financeService;
+		this.staffService = staffService;
 	}
-<<<<<<< Updated upstream
+
 //	handler method to handle finance form
     @GetMapping("/users/finance")
     public String finance(Model model) {
     	List<FinanceDto> financeDto = financeService.findAllRecords();
     	model.addAttribute("financeDto", financeDto);
-=======
+
 
 	//	handler method to handle finance form
     @GetMapping("/finance")
     public String finance(Model model, HttpServletRequest request) {
     	List<Finance> finance = financeService.getAllFinancialRecordsOrderedByIdDesc();
     	model.addAttribute("financeDto", finance);
+
+	//	handler method to handle finance form
+    @GetMapping("/finance")
+    public String finance(Model model, HttpServletRequest request) {
+    	List<FinanceDto> financeDto = financeService.findAllRecords();
+    	model.addAttribute("financeDto", financeDto);
+
     	
     	Principal principal = request.getUserPrincipal();
 		Staff staff = new Staff();
@@ -52,18 +67,21 @@ public class FinanceController {
 		
 		model.addAttribute("user",staff.getFname());
 		System.out.println(staff.getFname());
->>>>>>> Stashed changes
+
     	return "finance";
     }
     
 //	handler method to handle new financial record request
-<<<<<<< Updated upstream
+
 	@GetMapping("/users/finance/add-financial-record")
+
+	@GetMapping("/finance/add-financial-record")
+
 	public String addFinancialRecord(Model model) {
-=======
+
 	@GetMapping("/finance/add-financial-record")
 	public String addFinancialRecord(Model model, HttpServletRequest request) {
->>>>>>> Stashed changes
+
 		FinanceDto fRecord = new FinanceDto();
 		if(financeService.getLastValueOfBalance() != null) {
 			fRecord.setBalance(financeService.getLastValueOfBalance());
@@ -80,13 +98,13 @@ public class FinanceController {
 		return "add-financial-record";
 	}
 
-<<<<<<< Updated upstream
+
 //	handle method to handle new financial record submit request
-	@PostMapping("users/finance/add-financial-record")
+	@PostMapping("/finance/add-financial-record")
 	public String addFinancialRecord(@ModelAttribute("fRecord") FinanceDto financeRecord, Model model) {
 		financeService.addFinancialRecord(financeRecord);
 		return "redirect:/users/finance";
-=======
+
 //	handler method to handle new financial record submit request
 	@PostMapping("/finance/add-financial-record")
 	public String addFinancialRecord(@ModelAttribute("userData") FinanceDto financeRecord, Model model, HttpServletRequest request) {
@@ -96,11 +114,11 @@ public class FinanceController {
 		
 		financeService.addFinancialRecord(financeRecord, staff.getId());
 		return "redirect:/finance";
->>>>>>> Stashed changes
+
 	}
 	
 //	handler method to handle financial record update request
-	@GetMapping("/users/finance/edit-financial-record/{id}")
+	@GetMapping("/finance/edit-financial-record/{id}")
 	public String editFinancialRecordForm(@PathVariable("id") Long id, Model model) {
 		Finance fRecord = financeService.findFinancialRecordById(id);
     	BigDecimal previousBalance = financeService.getPreviousBalance(id);
@@ -110,7 +128,7 @@ public class FinanceController {
 	}
 	
 //	handler method to handle financial record update submit request
-	@PostMapping("/users/finance/edit-financial-record/{id}")
+	@PostMapping("/finance/edit-financial-record/{id}")
 	public String editFinancialRecord(@PathVariable("id") Long id, @ModelAttribute("userData") Finance userData,
 			BindingResult result, Model model, HttpServletRequest request) {
 //		Finance existingRecord = financeService.findFinancialRecordById(id);
@@ -130,13 +148,17 @@ public class FinanceController {
 		return "redirect:/finance";
 	}
 	
-<<<<<<< Updated upstream
+
 //	handler method to handle deletion of registered data
+
     @GetMapping("/users/finance/{id}")
-=======
+
 //	handler method to handle deletion of financial record
     @GetMapping("/finance/{id}")
->>>>>>> Stashed changes
+
+
+    @GetMapping("/finance/{id}")
+
     public String deleteUser(@PathVariable("id") Long id) {
     	financeService.deleteFinancialRecordById(id);
     	return "redirect:/finance";

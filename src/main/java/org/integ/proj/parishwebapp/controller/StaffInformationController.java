@@ -49,7 +49,6 @@ public class StaffInformationController {
 	public String users(Model model, HttpServletRequest request) {
 		List<StaffDto> staffDto = staffService.findAllUsers();
 		model.addAttribute("staffDto", staffDto);
-		
 		Principal principal = request.getUserPrincipal();
 		Staff staff = new Staff();
 		staff = staffService.findUserByEmail(principal.getName());

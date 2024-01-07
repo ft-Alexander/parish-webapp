@@ -16,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StaffDto {
-	 private Long id;
+	 	private Long id;
 	    @NotEmpty
 	    private String fname;
 	    @NotEmpty
