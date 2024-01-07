@@ -71,7 +71,7 @@ public class FinanceServiceImpl implements FinanceService {
 	
 	@Override
     public void deleteFinancialRecordById(Long id) {
-    	financeRepository.deleteById(id);
+        financeRepository.deleteByFinanceId(id);
     }
 	
 	@Override

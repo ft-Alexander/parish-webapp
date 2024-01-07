@@ -140,18 +140,26 @@ public class StaffInformationController {
 
 	@GetMapping("/users/{id}")
 	public String deleteUser(@PathVariable("id") Long id) {
+		System.out.println(id);
 		staffService.deleteUserById(id);
 		return "redirect:/users";
 	}
 	@GetMapping("/users/view/{id}")
 	public String viewUserForm(@PathVariable("id") Long id, Model model) {
-		
-		
 		model.addAttribute("userData", staffService.findUserById(id));
 		Staff staff = new Staff();
-		staff = staffService.findUserById(staffService.findUserById(id).getEditedBy());
-		model.addAttribute("EditedBy", staff);
-		return "view-user";
+		System.out.println(staffService.findUserById(id).getEditedBy());
+		if(staffService.findUserById(id).getEditedBy() != null) {
+			staff = staffService.findUserById(staffService.findUserById(id).getEditedBy());
+			model.addAttribute("EditedBy", staff);
+			return "view-user";
+		}else {
+			staff = staffService.findUserById(id);
+			model.addAttribute("EditedBy", staff);
+			return "view-user";
+		}
+		
+		
 	}
 
 }

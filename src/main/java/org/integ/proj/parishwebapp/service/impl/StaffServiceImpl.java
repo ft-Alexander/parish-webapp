@@ -42,13 +42,8 @@ public class StaffServiceImpl implements StaffService{
 	        // encrypt the password using spring security
 	        staff.setPassword(passwordEncoder.encode(staffDto.getPassword()));
 	        staff.setEmployementDate(staffDto.getEmployementDate());
-
 	        // Find or create the "ROLE_USER" role
 	        Role role = roleRepository.findByName("ROLE_USER");
-	        if (role == null) {
-	            role = createRole("ROLE_USER");
-	        }
-
 	        staff.setRole(role);
 	        staffRepository.save(staff);
 	    }
@@ -70,7 +65,7 @@ public class StaffServiceImpl implements StaffService{
 	    
 	    @Override
 	    public void deleteUserById(Long id) {
-	    	staffRepository.deleteById(id);
+	    	staffRepository.deleteByStaffId(id);;
 	    }
 	    
 	    @Override
@@ -95,13 +90,6 @@ public class StaffServiceImpl implements StaffService{
 	        staffDto.setPhoneNumber(user.getPhoneNumber());
 	        return staffDto;
 	    }
-
-	    private Role createRole(String roleName) {
-	        Role role = new Role();
-	        role.setName(roleName);
-	        return roleRepository.save(role);
-	    }
-
 		@Override
 		public List<Staff> search(String keyword) {
 			if(keyword != null) {
