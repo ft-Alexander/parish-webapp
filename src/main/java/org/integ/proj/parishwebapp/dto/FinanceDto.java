@@ -27,11 +27,10 @@ public class FinanceDto {
 	private LocalDate date;
 	
 	@NotEmpty
-	private BigDecimal income;
+	private BigDecimal amount;
 	
 	@NotEmpty
-	private BigDecimal expense;
-	
+	private String transaction_type;
 	
 	private BigDecimal balance;
 }

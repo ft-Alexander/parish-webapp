@@ -31,11 +31,15 @@ public class Finance {
 	private LocalDate date;
 	
 	@Column(nullable=false)
-	private BigDecimal income;
+	private BigDecimal amount;
 	
 	@Column(nullable=false)
-	private BigDecimal expense;
+	private String transaction_type;
 	
 	@Column(nullable=false)
 	private BigDecimal balance;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "staff_id", referencedColumnName = "ID")
+    private Staff staff;
 }
