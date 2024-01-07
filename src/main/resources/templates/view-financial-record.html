@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Parish Information Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+</head>
+
+<body class="bg-gray-100">
+	<div class="flex h-screen items-center justify-center">
+		<div
+			class="w-full max-w-2xl mx-4 md:mx-auto rounded bg-white p-14 shadow-md">
+			<h2 class="mb-4 text-center text-2xl font-bold">Financial Record</h2>
+			<form class="space-y-4">
+				<div class="grid grid-cols-2 gap-4">
+					<div class="mb-4">
+						<label for="id" class="block text-sm font-medium text-gray-600">Record ID</label> 
+						<input type="text" id="id" name="id"
+							th:value="${userData.id}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+
+					<div class="mb-4">
+						<label for="staff_id" class="block text-sm font-medium text-gray-600">Staff ID</label> 
+						<input type="text" id="staff_id" name="staff_id"
+							th:value="${userData.staff.id + ' - ' + userData.staff.fname}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+				</div>
+				
+				<div class="grid grid-cols-2 gap-4">
+					<div class="mb-4">
+						<label for="date" class="block text-sm font-medium text-gray-600">Date Issued</label> 
+						<input type="date" id="date" name="date"
+							th:value="${userData.date}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+					
+					<div class="mb-4">
+						<label for="transaction_type" class="block text-sm font-medium text-gray-600">Transaction Type</label>
+						<input type="text" id="transaction_type" name="transaction_type"
+							th:value="${userData.transaction_type}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+				</div>
+
+				<div class="grid grid-cols-2 gap-4">
+					<div class="mb-4">
+						<label for="notes" class="block text-sm font-medium text-gray-600">Notes</label> 
+						<input type="text" id="notes" name="notes"
+							th:value="${userData.notes}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+				</div>
+
+				<div>
+					<div class="mb-4">
+						<label for="description" class="block text-sm font-medium text-gray-600">Description</label> 
+						<input type="text" id="description" name="description"
+							th:value="${userData.description}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+				</div>
+
+				<div class="grid grid-cols-2 gap-4">
+					<div class="mb-4">
+						<label for="amount" class="block text-sm font-medium text-gray-600">Amount</label>
+						<input type="number" id="amount" name="amount"
+							th:value="${userData.amount}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+					
+					<div class="mb-4">
+						<label for="balance"
+							class="block text-sm font-medium text-gray-600">Balance</label> 
+						<input type="number" id="balance" name="balance" 
+							th:value="${userData.balance}" readonly
+							class="w-full rounded border p-2 bg-gray-200 focus:outline-none" />
+					</div>
+				</div>
+
+		<div class="flex items-center justify-end">
+			<a th:href="@{/finance}"
+				class="rounded bg-blue-500 p-2 text-white focus:border-blue-300 focus:outline-none focus:ring"
+				style="background-color: blue; border-color: blue">Back</a>
+		</div>
+		</form>
+	</div>
+	</div>
+</body>
+</html>

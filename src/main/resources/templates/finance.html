@@ -6,6 +6,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/index}">Finance Sector</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+             		<a class="nav-link active" aria-current="page" th:href="@{/users}">Users</a>
+             	</li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
 <body class="font-sans bg-gray-100">
 <nav class="bg-gradient-to-r from-green-500 to-green-700 text-white shadow-md">
       <div class="container mx-auto flex flex-col items-center justify-between p-4 lg:flex-row">
@@ -62,5 +79,91 @@
         </tbody>
     </table>
 </div>
+=======
+<body class="font-sans bg-gray-100">
+	<nav class="bg-gradient-to-r from-green-500 to-green-700 text-white shadow-md">
+      <div class="container mx-auto flex flex-col items-center justify-between p-4 lg:flex-row">
+        <a class="mb-4 flex items-center rounded px-3 py-2 text-lg transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800 lg:mb-0" th:href="@{/dashboard}">
+          <i class="material-icons mr-2 text-2xl">account_circle</i>
+          <span class="text-white-500 text-lg font-light italic">WELCOME!&nbsp;</span>
+          <span class="text-gray font-semibold" th:text="${user}"></span>
+        </a>
+
+        <div class="lg:flex lg:w-auto lg:items-center">
+          <ul class="flex list-none space-x-4">
+            <li class="nav-item"><a class="rounded px-3 py-2 transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800" th:href="@{/finance}">Finance</a></li>
+            <li class="nav-item"><a class="rounded px-3 py-2 transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800" th:href="@{/users}">Staff</a></li>
+            <li class="nav-item"><a class="rounded px-3 py-2 transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-800" th:href="@{/logout}">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container mx-auto my-8 p-4 lg:p-8 bg-white rounded shadow-md">
+    	<div class="mb-4 lg:mb-8 text-center">
+    		<h2 class="text-2xl lg:text-4xl font-bold text-green-600">
+    			Budget Tracker
+    		</h2>
+    	</div>
+    	<div class="mb-4 flex justify-between">
+    		<form th:action="@{/finance/search}" method="GET">
+    			<input type="text" id="keyword" name="keyword" th:value="${keyword}"
+    				placeholder="Enter your search query"
+    				class="p-2 border border-gray-300 rounded" required />
+    			<button type="submit"
+    				class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
+    			<input type="button" value="Clear" id="btnClear"
+    				class="bg-green-500 text-white px-4 py-2 rounded"
+    				onclick="clearSearch()" />
+    		</form>
+    		<a th:href="@{/finance/add-financial-record}">
+    			<button class="bg-green-500 text-white px-4 py-2 rounded">Add New Record</button>
+    		</a>
+    	</div>
+    	<div class="overflow-x-auto">
+    		<table class="min-w-full bg-white border border-gray-300">
+    			<thead>
+    				<tr>
+    					<th class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">ID</th>
+    					<th class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Notes</th>
+    					<th class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Date</th>
+    					<th class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Transaction Type</th>
+    					<th class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Amount</th>
+    					<th class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Balance</th>
+    					<th class="py-3 px-6 bg-gray-100 text-left text-sm lg:text-base font-semibold text-gray-700 border-b">Actions</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+    				<tr th:each="finance : ${financeDto}" class="hover:bg-gray-100">
+    					<td class="py-2 lg:py-4 px-6 border-b" th:text="${finance.id}"></td>
+    					<td class="py-2 lg:py-4 px-6 border-b" th:text="${finance.notes}"></td>
+    					<td class="py-2 lg:py-4 px-6 border-b" th:text="${finance.date}"></td>
+    					<td class="py-2 lg:py-4 px-6 border-b" th:text="${finance.transaction_type}"></td>
+    					<td class="py-2 lg:py-4 px-6 border-b" th:text="'Php ' + ${finance.amount}"></td>
+    					<td class="py-2 lg:py-4 px-6 border-b" th:text="'Php ' + ${finance.balance}"></td>
+    					<td class="py-2 lg:py-4 px-6 border-b" >
+    						<a th:href="@{/finance/edit-financial-record/{id}(id=${finance.id})}"
+    						class="text-blue-600 hover:underline mr-2">Edit</a>
+    						<a th:href="@{/finance/view-financial-record/{id}(id=${finance.id})}"
+    						class="text-green-600 hover:underline mr-2">View</a>
+    						<a th:href="@{/finance/{id}(id=${finance.id})}"
+    						class="text-red-600 hover:underline"
+    						onclick="return confirmDelete()">Delete</a>
+    					</td>
+    				</tr>
+    			</tbody>
+    		</table>
+    	</div>
+    </div>
+    <script type="text/javascript">
+    	function clearSearch() {
+    		window.location = "/finance";
+    	}
+    	
+    	function confirmDelete() {
+    		var confirmDelete = confirm("Are you sure you want to delete this record?");
+    		return confirmDelete;
+    	}
+    </script>
 </body>
 </html>
