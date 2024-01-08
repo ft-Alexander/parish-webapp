@@ -6,16 +6,9 @@ import org.integ.proj.parishwebapp.entity.Staff;
 import org.integ.proj.parishwebapp.repository.RoleRepository;
 import org.integ.proj.parishwebapp.repository.StaffRepository;
 import org.integ.proj.parishwebapp.service.StaffService;
-import org.springframework.data.util.Streamable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,11 +32,12 @@ public class StaffServiceImpl implements StaffService{
 	        staff.setLname(staffDto.getLname());
 	        staff.setName(staffDto.getFname() + " " + staffDto.getMname() + " " + staffDto.getLname());
 	        staff.setEmail(staffDto.getEmail());
-	        // encrypt the password using spring security
 	        staff.setPassword(passwordEncoder.encode(staffDto.getPassword()));
 	        staff.setEmployementDate(staffDto.getEmployementDate());
-	        // Find or create the "ROLE_USER" role
 	        Role role = roleRepository.findByName("ROLE_USER");
+	        if (role == null) {
+	            role = createRole("ROLE_USER");
+	        }
 	        staff.setRole(role);
 	        staffRepository.save(staff);
 	    }
@@ -58,10 +52,6 @@ public class StaffServiceImpl implements StaffService{
 	    	return staffRepository.findById(id).get();
 	    }
 	    
-//	    @Override
-//	    public Staff editUser(Staff staff) {
-//	    	return staffRepository.save(staff);
-//	    }
 	    
 	    @Override
 	    public void deleteUserById(Long id) {
@@ -78,9 +68,6 @@ public class StaffServiceImpl implements StaffService{
 
 	    private StaffDto mapToUserDto(Staff user){
 	        StaffDto staffDto = new StaffDto();
-	        //String[] str = user.getName().split(" ");
-	        //staffDto.setFname(str[0]);
-	        //staffDto.setLname(str[1]);
 	        staffDto.setId(user.getId());
 	        staffDto.setFname(user.getFname());
 	        staffDto.setMname(user.getMname());
@@ -118,6 +105,12 @@ public class StaffServiceImpl implements StaffService{
 			System.out.println(userData.getRole().getName());
 			staffRepository.save(existingUser);			
 		}
+		
+		private Role createRole(String roleName) {
+	        Role role = new Role();
+	        role.setName(roleName);
+	        return roleRepository.save(role);
+	    }
 
 
 		

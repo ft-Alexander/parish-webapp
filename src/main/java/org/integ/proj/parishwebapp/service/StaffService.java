@@ -1,11 +1,8 @@
 package org.integ.proj.parishwebapp.service;
 
-import java.time.LocalDate;
 import java.util.List;
-
 import org.integ.proj.parishwebapp.dto.StaffDto;
 import org.integ.proj.parishwebapp.entity.Staff;
-import org.springframework.data.util.Streamable;
 
 public interface StaffService {
 	 void saveUser(StaffDto staffDto);

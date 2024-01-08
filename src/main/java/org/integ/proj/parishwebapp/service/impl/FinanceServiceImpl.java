@@ -2,7 +2,6 @@ package org.integ.proj.parishwebapp.service.impl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.integ.proj.parishwebapp.dto.FinanceDto;
 import org.integ.proj.parishwebapp.entity.Finance;
@@ -11,11 +10,8 @@ import org.integ.proj.parishwebapp.repository.FinanceRepository;
 import org.integ.proj.parishwebapp.service.FinanceService;
 import org.integ.proj.parishwebapp.service.StaffService;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class FinanceServiceImpl implements FinanceService {
@@ -43,7 +39,6 @@ public class FinanceServiceImpl implements FinanceService {
 		newFinanceRecord.setDescription(financeDto.getDescription());
 		newFinanceRecord.setDate(financeDto.getDate());
 		newFinanceRecord.setAmount(financeDto.getAmount());
-//		newFinanceRecord.setBalance(financeDto.getBalance());
 		
 		newFinanceRecord.setStaff(staff);
 		
@@ -64,10 +59,6 @@ public class FinanceServiceImpl implements FinanceService {
 		financeRepository.save(newFinanceRecord);
 	}
 
-//	@Override
-//	public Finance editFinancialRecord(Finance finance) {
-//		return financeRepository.save(finance);
-//	}
 	
 	@Override
     public void deleteFinancialRecordById(Long id) {
@@ -109,7 +100,6 @@ public class FinanceServiceImpl implements FinanceService {
 		existingRecord.setTransaction_type(userData.getTransaction_type());
 		existingRecord.setDescription(userData.getDescription());
 		existingRecord.setAmount(userData.getAmount());
-//		existingRecord.setBalance(userData.getBalance());
 		
 		existingRecord.setStaff(staff);
 		

@@ -43,11 +43,7 @@ public class AuthenticationController implements UserDetailsService {
 	private Collection<? extends GrantedAuthority> mapRoleToAuthorities(Role role) {
         Set<GrantedAuthority> authorities = new HashSet<>();
         System.out.print("Mapping role to authorities: " + role.getName());
-        // Assuming Role is an enum or has a method to get authority names
         authorities.add(new SimpleGrantedAuthority(role.getName()));
-
-        // Add more authorities as needed based on your application logic
-
         return authorities;
     }
 	

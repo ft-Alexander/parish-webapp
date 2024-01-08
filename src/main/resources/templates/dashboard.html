@@ -94,7 +94,7 @@
 				<h2 class="mb-2 font-serif text-xl italic text-gray-700">Invoice
 					Entries:&nbsp;</h2>
 			</div>
-			<span class="text-xl font-semibold text-green-500"></span>
+			<span class="text-xl font-semibold text-green-500" th:text="${invoiceCount}"></span>
 		</div>
 
 		<!-- Box 3 -->
@@ -102,9 +102,9 @@
 			<i class="material-icons mb-2 mr-2 text-2xl text-green-500">attach_money</i>
 			<div>
 				<h2 class="mb-2 font-serif text-xl italic text-gray-700">Budget
-					Left:&nbsp;Php</h2>
+					Left:&nbsp;Php&nbsp;</h2>
 			</div>
-			<span class="text-xl font-semibold text-green-500"></span>
+			<span class="text-xl font-semibold text-green-500" th:text="${budget}"></span>
 		</div>
 
 		<!-- Box 4 -->

@@ -7,15 +7,11 @@ import org.integ.proj.parishwebapp.entity.Finance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
 import jakarta.transaction.Transactional;
 
 public interface FinanceRepository extends JpaRepository<Finance, Long> {
 	@Query("SELECT f FROM Finance f WHERE f.notes LIKE %?1% OR f.transaction_type LIKE %?1% OR f.id LIKE %?1% OR f.amount LIKE %?1%")
 	List<Finance> search(String keyword);
-//	@Query("SELECT f FROM Finance f WHERE LOWER(CONCAT(f.id, f.amount, f.notes, f.transaction_type)) LIKE %:keyword%")
-//	List<Finance> searchAllFields(@Param("keyword") String keyword);
 	
 	@Modifying
     @Transactional

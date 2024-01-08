@@ -11,7 +11,6 @@ public interface FinanceService {
 	
 	void deleteFinancialRecordById(Long id);
 	
-//	List<FinanceDto> findAllRecords();
 	List<Finance> getAllFinancialRecordsOrderedByIdDesc();
 	
 	List<Finance> search(String keyword);
